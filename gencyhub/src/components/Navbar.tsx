@@ -1,6 +1,7 @@
 import { MdFavoriteBorder } from "react-icons/md";
 import { LuShoppingCart } from "react-icons/lu";
 import { FaRegUserCircle } from "react-icons/fa";
+import SearchInput from "./SearchInput";
 
 
 const NavBar = () => {
@@ -13,7 +14,7 @@ const NavBar = () => {
        
       </div>
       <div className="hidden md:block">
-       
+       <SearchInput/>
       </div>
       
       <div className="flex shrink-0 gap-8  text-3xl">
