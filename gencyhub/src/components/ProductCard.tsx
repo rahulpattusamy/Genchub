@@ -6,7 +6,7 @@ const ProductCard = () => {
     const {data, error} = useProducts()
     if(error) return<p>{error.message}</p>
   return (
-     <div className="grid grid-cols-5 pl-60 gap-y-10">
+     <div className="grid grid-cols-5 pl-20 pt-20 gap-y-10">
       {data?.products.map((product) => {
         return (
           <div className="card" key={product.id}>
