@@ -1,8 +1,11 @@
+import ProductCard from "./components/ProductCard"
 
 
 const App = () => {
   return (
-    <div>App</div>
+    <div>
+     <ProductCard/>
+    </div>
   )
 }
 

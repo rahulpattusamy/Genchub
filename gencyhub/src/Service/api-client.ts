@@ -2,7 +2,7 @@ import axios from 'axios'
 
 
 const apiclient = axios.create({
-     baseURL:"'https://dummyjson.com'"
+     baseURL:'https://dummyjson.com'
 })
  
 

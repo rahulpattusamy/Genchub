@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  --font-Poppins: "Poppins", sans-serif;
+
+}
+
+body {
+  font-family: var(--font-Poppins);
+  font-weight: 200;
+  font-style: normal;
+}
+
+@layer components {
+  .card {
+    @apply text-black text-sm shadow-xl rounded-sm font-light
+          w-48 min-h-[22rem]
+         overflow-hidden;
+  }
+
+  .btn {
+    @apply flex items-center gap-2 bg-red-400 border text-white text-xs  p-2 rounded hover:cursor-pointer transform-3d cursor-pointer transition transform active:scale-110;
+  }
+  .btn2{
+   @apply bg-red-400 text-white  p-2 rounded-2xl text-lg hover:cursor-pointer transition transform active:scale-110;
+  }
+  .btn3{
+    @apply px-2 bg-gray-800 text-sm flex items-center text-center gap-1 text-white  rounded hover:bg-gray-900  cursor-pointer transition transform active:scale-110;
+  }
+
+  .cartcard{
+    @apply  bg-white text-black
+          w-100  object-cover font-light
+        shadow-2xl rounded-sm overflow-hidden;
+  }
+  .priceCard{
+    @apply bg-white font-light text-black 
+          w-75 h-85 object-cover 
+          shadow-2xl rounded-xs overflow-hidden;
+  }
+  .wishlistcard{
+    @apply text-black text-sm shadow-xl rounded-sm font-light
+          w-48 min-h-[20rem]
+         overflow-hidden;
+  }
+  .btn4{
+    @apply bg-gray-800 text-white text-center px-1.5 rounded-4xl hover:bg-gray-900  cursor-pointer transition transform active:scale-110;
+  }
+  .pricedetails{
+  @apply flex justify-between p-4 text-sm text-black
+  }
+  .text{
+    @apply  text-black text-sm
+  }
+  
+}
