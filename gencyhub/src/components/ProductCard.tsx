@@ -3,6 +3,7 @@ import useProducts from "../hooks/useProducts"
 
 
 
+
 const ProductCard = () => {
     const {data, error} = useProducts()
     if(error) return<p>{error.message}</p>

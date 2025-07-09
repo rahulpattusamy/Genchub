@@ -1,13 +1,19 @@
-import { useQuery } from "@tanstack/react-query"
-import apiclient from "../Service/api-client"
+import { useQuery } from "@tanstack/react-query";
+import Apiclient from "../Service/api-client";
 
-type categorylist = string[]
+interface categories{
+  slug: string;
+  url: string;
+}
+
+    const apiclient = new Apiclient<categories[]>('/products/categories')
 
 const useCategory = () => {
   return useQuery({
-     queryKey:["category-list"],
-     queryFn:()=>apiclient.get<categorylist[]>('/products/category-list').then(res=>res.data)
-  })
-}
+    queryKey: ["categories"],
+    queryFn: () =>
+      apiclient.getAll(),
+  });
+};
 
-export default useCategory
+export default useCategory;
