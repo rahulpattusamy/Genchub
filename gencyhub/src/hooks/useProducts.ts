@@ -2,11 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import Apiclient from "../Service/api-client";
 import useProductendpoint from "./useProductendpoint";
 
-interface Products {
+export interface Products {
   id: number;
   title: string;
   price: number;
+  rating:number;
   thumbnail: string;
+  quantity:number
 }
 
 interface response {

@@ -16,19 +16,13 @@ const SearchInput = () => {
       }}
       action="search"
     >
-      <div className="relative">
-        <div className="sm:text-black absolute pt-1.5 sm:mt-0 ml-2 text-2xl">
-          <CiSearch />
-        </div>
-        <div>
-          <input
-            ref={ref}
-            className=" w-79 mt- p-1  sm:bg-white text-black sm:placeholder:text-gray-800 placeholder:pl-8 font-Poppins sm:p-1.5 sm:w-100 rounded-xl border-1 border-gray-700 sm:mt-0"
-            type="text"
-            placeholder="Search Products"
-          />
-        </div>
-      </div>
+    <div className="relative">
+     <div className="ml-2 sm:text-black absolute pt-1.5 sm:ml-2 text-2xl">
+       <CiSearch/>
+     </div>
+     
+     <input ref={ref} className=" ring-gray-700 focus:outline-none bg-white text-black border placeholder:text-gray-800 pl-10 font-Poppins p-1.5 w-75 rounded-xl border-0.5 sm:w-100"  type="text" placeholder='Search Products' />
+    </div>
     </form>
   );
 };

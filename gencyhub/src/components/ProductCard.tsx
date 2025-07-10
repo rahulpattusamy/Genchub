@@ -1,7 +1,6 @@
-import { MdFavoriteBorder, MdShoppingCart } from "react-icons/md"
+import { MdFavoriteBorder } from "react-icons/md"
 import useProducts from "../hooks/useProducts"
-
-
+import AddToCart from "./AddToCart"
 
 
 const ProductCard = () => {
@@ -32,7 +31,11 @@ const ProductCard = () => {
               </p>
               <p className="border-b mt-2 fiixed"></p>
             </div>
-            <button className="btn ml-2">Add to cart <MdShoppingCart/></button>
+            <div className="flex justify-between">
+                <AddToCart product={product}/>
+                <button className="btn">{product.rating}</button>
+            </div>
+         
           </div>
         );
       })}
