@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import Apiclient from "../Service/api-client";
-import useProductquery from "../productquerystore";
+import useProductendpoint from "./useProductendpoint";
 
 interface Products {
   id: number;
@@ -9,21 +9,18 @@ interface Products {
   thumbnail: string;
 }
 
-interface response{
-     products:Products[]
+interface response {
+  products: Products[];
 }
 
-
-
 const useProducts = () => {
-  const productquery = useProductquery(s=>s.productquery)
-  const category = useProductquery(s=>s.productquery.category)
-  const endpoint = category? `/products/category/${category}`:'/products'
-  const apiclient = new Apiclient<response>(endpoint)
+  const { endpoint, productquery } = useProductendpoint();
+
+  const apiclient = new Apiclient<response>(endpoint);
   return useQuery({
-    queryKey: ["products",productquery],
-    queryFn: () =>apiclient.getAll(),
+    queryKey: ["products", productquery],
+    queryFn: () => apiclient.getAll(),
   });
 };
 
-export default useProducts
+export default useProducts;

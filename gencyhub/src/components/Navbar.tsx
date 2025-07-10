@@ -6,7 +6,7 @@ import SearchInput from "./SearchInput";
 
 const NavBar = () => {
   return (
-    <header className="flex  shrink-0 items-center justify-between  bg-red-400 p-3 text-white">
+    <header className="flex sticky top-0 z-50  shrink-0 items-center justify-between  bg-red-400 p-3 text-white">
       <div>
         
          <h1 className="font-Poppins text-2xl cursor-pointer">GencHub</h1>
