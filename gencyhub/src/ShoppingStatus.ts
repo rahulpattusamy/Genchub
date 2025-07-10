@@ -8,6 +8,7 @@ interface ShoppingStatus {
 interface ShoppingStore {
   shoppingstatus: ShoppingStatus;
   setCart: (cart: Products) => void;
+  removeProduct: (id: number) => void;
 }
 
 const useShoppingstore = create<ShoppingStore>((set) => ({
@@ -16,9 +17,13 @@ const useShoppingstore = create<ShoppingStore>((set) => ({
     set((state) => ({
       shoppingstatus: {
         ...state.shoppingstatus,
-        cart: { ...(state.shoppingstatus.cart || []), products },
+        cart: [...(state.shoppingstatus.cart || []), products],
       },
     })),
+    removeProduct:(id)=>set((state)=>{
+      const updatedcart = state.shoppingstatus.cart?.filter(e=>e.id !== id)
+      return {shoppingstatus:{...state.shoppingstatus, cart:updatedcart}}
+    })
 }));
 
 export default useShoppingstore;

@@ -2,9 +2,11 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { LuShoppingCart } from "react-icons/lu";
 import { FaRegUserCircle } from "react-icons/fa";
 import SearchInput from "./SearchInput";
+import { useNavigate } from "react-router-dom";
 
 
 const NavBar = () => {
+  const navigate = useNavigate()
   return (
     <header className="flex sticky top-0 z-50  shrink-0 items-center justify-between  bg-red-400 p-3 text-white">
       <div>
@@ -26,7 +28,7 @@ const NavBar = () => {
          <span className="text-sm bg-gray-700 w-5 text-center rounded-2xl ml-5 -mt-1  absolute">
           0
         </span>
-        <button className="cursor-pointer relative">
+        <button onClick={()=>navigate('/cart')} className="cursor-pointer relative">
             <LuShoppingCart />
           
         </button>
