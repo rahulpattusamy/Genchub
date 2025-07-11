@@ -8,7 +8,7 @@ const ProductCard = () => {
     if(error) return<p>{error.message}</p>
   return (
     <>
-     <div className="grid grid-cols-2 gap-5 ml-6 md:grid-cols-3 md:gap-4 lg:grid-cols-4 lg:gap-10">
+     <div className="grid grid-cols-2 gap-5 ml-6 md:grid-cols-2 md:gap-10 lg:grid-cols-4 lg:gap-10">
       {data?.products.map((product) => {
         return (
           <div className="card" key={product.id}>

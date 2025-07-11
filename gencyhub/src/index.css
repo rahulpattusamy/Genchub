@@ -16,9 +16,9 @@ body {
 @layer components {
   .card {
     @apply  text-black text-sm shadow-xl rounded-sm font-light 
-    w-32 min-h-[17rem] overflow-hidden
-    sm:w-48 sm:min-h-[22rem] sm:overflow-hidden
-    md:w-48 md:min-h-[22rem]
+   max-w-32 min-h-[17rem] overflow-hidden
+    sm:max-w-48 sm:max-h-[22rem] sm:overflow-hidden
+    md:max-w-48 md:max-h-[22rem]
          md:overflow-hidden;
    
   }
