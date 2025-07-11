@@ -1,5 +1,4 @@
 
-// components/Footer.tsx
 import {
   FaFacebook,
   FaTwitter,
@@ -9,6 +8,7 @@ import {
   FaCcMastercard,
   FaCcPaypal,
   FaCcAmex,
+  FaRegCopyright,
 } from "react-icons/fa";
 
 const Footer =()=> {
@@ -34,7 +34,7 @@ const Footer =()=> {
   ];
 
   return (
-    <footer className="bg-gray-900 text-gray-100 px-4 py-12">
+    <footer className="bg-black text-gray-100 px-4 py-12">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
           <h3 className="text-2xl font-bold mb-4">GenChub</h3>
@@ -48,9 +48,9 @@ const Footer =()=> {
             <ul className="space-y-2 text-sm">
               {section.links.map((link, idx) => (
                 <li key={idx}>
-                  <a href={link.href} className="hover:underline">
+                  <p className="hover:underline">
                     {link.name}
-                  </a>
+                  </p>
                 </li>
               ))}
             </ul>
@@ -79,10 +79,10 @@ const Footer =()=> {
       </div>
       <div className="max-w-7xl mx-auto mt-10 flex flex-col md:flex-row justify-between items-center border-t border-gray-700 pt-6 gap-4 text-sm">
         <div className="flex space-x-4 text-xl">
-          <a href="#"><FaFacebook/></a>
-          <a href="#"><FaTwitter/></a>
-          <a href="#"><FaInstagram/></a>
-          <a href="#"><FaYoutube/></a>
+          <p><FaFacebook/></p>
+          <p><FaTwitter/></p>
+          <p><FaInstagram/></p>
+          <p><FaYoutube/></p>
         </div>
 
         <div className="flex space-x-4 text-2xl text-gray-400">
@@ -93,8 +93,8 @@ const Footer =()=> {
         </div>
       </div>
 
-      <div className="mt-6 text-center text-gray-500 text-xs">
-        © 2050 GenChub. All rights reserved.
+      <div className="mt-6 flex justify-center items-center text-center text-white text-xs">
+       <FaRegCopyright /> <p className="ml-2">2050 GenChub. All rights reserved</p>.
       </div>
     </footer>
   );

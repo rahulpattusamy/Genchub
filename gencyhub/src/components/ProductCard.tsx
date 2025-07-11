@@ -29,11 +29,11 @@ const ProductCard = () => {
                <MdFavoriteBorder/>
                 </button>
               </p>
-              <p className="border-b mt-2 fiixed"></p>
+              <p className="border-b mt-2"></p>
             </div>
-            <div className="flex justify-between">
+            <div className="flex p-2  -ml-2 justify-between  items-center">
                 <AddToCart product={product}/>
-                <button className="btn">{product.rating}</button>
+                <button className="btn bg-gray-800">{product.rating}</button>
             </div>
          
           </div>

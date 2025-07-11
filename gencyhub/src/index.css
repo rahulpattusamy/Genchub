@@ -17,14 +17,14 @@ body {
   .card {
     @apply  text-black text-sm shadow-xl rounded-sm font-light 
    max-w-32 min-h-[17rem] overflow-hidden
-    sm:max-w-48 sm:max-h-[22rem] sm:overflow-hidden
-    md:max-w-48 md:max-h-[22rem]
+    sm:max-w-48 sm:max-h-[23rem] sm:overflow-hidden
+    md:max-w-48 md:max-h-[23rem]
          md:overflow-hidden;
    
   }
 
   .btn {
-    @apply flex items-center gap-2 bg-red-400 border text-white text-xs  p-2 rounded hover:cursor-pointer transform-3d cursor-pointer transition transform active:scale-110;
+    @apply flex items-center gap-2 bg-red-400 border text-white text-xs  p-1 rounded hover:cursor-pointer transform-3d cursor-pointer transition transform active:scale-110;
   }
   .btn2{
    @apply bg-red-400 text-white  p-2 rounded-2xl text-lg hover:cursor-pointer transition transform active:scale-110;
@@ -49,7 +49,7 @@ body {
          overflow-hidden;
   }
   .btn4{
-    @apply bg-gray-800 text-white text-center px-1.5 rounded-4xl hover:bg-gray-900  cursor-pointer transition transform active:scale-110;
+    @apply bg-gray-800 text-white text-center h-8 w-8 rounded-2xl hover:bg-gray-900  cursor-pointer transition transform active:scale-110;
   }
   .pricedetails{
   @apply flex justify-between p-4 text-sm text-black
@@ -57,6 +57,10 @@ body {
   .text{
     @apply 
     text-xs sm:text-black sm:text-sm
+  }
+
+  .text2{
+    @apply text-lg 
   }
   
 }
