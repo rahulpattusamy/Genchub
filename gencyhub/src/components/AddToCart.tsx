@@ -24,8 +24,12 @@ const AddToCart = ({product}:Props) => {
   return (
     <div>
       <button onClick={()=>{!isProductinCart && setCart(product); isProductinCart&& navigate('/cart')}
-      } className="btn text-sm ml-2">
+      } className="btn hidden text-sm lg:text-lg lg:flex ml-2">
         {isProductinCart?"Added" : "Add to cart"}
+        {isProductinCart?<LuCheck/> :<LuShoppingCart/> }
+      </button>
+      <button  onClick={()=>{!isProductinCart && setCart({...product, quantity:1}); isProductinCart&& navigate('/cart')}
+      } className="btn p-2 block text-xl lg:hidden ml-2">
         {isProductinCart?<LuCheck/> :<LuShoppingCart/> }
       </button>
     </div>

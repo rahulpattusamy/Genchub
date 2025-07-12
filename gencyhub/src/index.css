@@ -18,7 +18,7 @@ body {
     @apply  text-black text-sm shadow-xl rounded-sm font-light 
    max-w-32 min-h-[17rem] overflow-hidden
     sm:max-w-48 sm:max-h-[23rem] sm:overflow-hidden
-    md:max-w-48 md:max-h-[23rem]
+    md:max-w-50 md:max-h-[23rem]
          md:overflow-hidden;
    
   }

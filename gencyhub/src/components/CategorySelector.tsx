@@ -7,10 +7,11 @@ const CategorySelector = () => {
   const setcategory = useProductquery(s=>s.setCategory)
   return (
     <div>
-      <select className="border border-gray-800"onChange={(e)=> setcategory(e.target.value)} >
+      <select className="border border-white rounded-sm w-60 h-10 font-bold bg-red-400 text-white ml-2 "onChange={(e)=> setcategory(e.target.value)} >
+        <option className="text-white" value="">All Category</option>
         {data?.map((category, index) => (
-          <option className="text-gray-800" key={index} value={category.slug}>
-            {category.slug}
+          <option className="text-white" key={index} value={category.slug}>
+            {category.name}
           </option>
         ))}
       </select>

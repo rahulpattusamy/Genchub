@@ -3,12 +3,17 @@ import useProducts from "../hooks/useProducts"
 import AddToCart from "./AddToCart"
 
 
+
 const ProductCard = () => {
     const {data, error} = useProducts()
     if(error) return<p>{error.message}</p>
+    
+    
+
+
   return (
     <>
-     <div className="grid grid-cols-2 gap-5 ml-6 md:grid-cols-2 md:gap-10 lg:grid-cols-4 lg:gap-10">
+     <div className="grid grid-cols-2 items-center gap-5 ml-6 md:grid-cols-2 md:gap-10 lg:grid-cols-4 lg:gap-10">
       {data?.products.map((product) => {
         return (
           <div className="card" key={product.id}>
@@ -33,7 +38,7 @@ const ProductCard = () => {
             </div>
             <div className="flex p-2  -ml-2 justify-between  items-center">
                 <AddToCart product={product}/>
-                <button className="btn bg-gray-800">{product.rating}</button>
+                <button className="btn p-2 bg-gray-800">{product.rating}</button>
             </div>
          
           </div>

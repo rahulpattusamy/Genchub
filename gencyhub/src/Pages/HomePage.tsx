@@ -10,10 +10,10 @@ const HomePage = () => {
     <div className="block  bg-white mt-4 ml-1 sm:hidden">
       <SearchInput/>
     </div>
-     <div className="block bg-white mt-4 ml-1 sm:hidden">
+     <div className="block bg-white mt-4 ml-2 sm:hidden">
         <CategorySelector/>
     </div>
-    <div className="flex sm:justify-around mt-5">
+    <div className="flex shrink-0 justify-around mt-5">
       <Category/>
      <ProductCard/>
     </div>

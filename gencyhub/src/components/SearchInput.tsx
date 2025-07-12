@@ -15,13 +15,13 @@ const SearchInput = () => {
         navigate('/')
       }}
       action="search"
-    >
+     className="">
     <div className="relative">
-     <div className="ml-2 sm:text-black absolute pt-1.5 sm:ml-2 text-2xl">
+     <div className="ml-2 pt-1.5 text-3xl sm:text-gray-500 absolute sm:pt-1.5 sm:ml-2 sm:text-4xl">
        <CiSearch/>
      </div>
      
-     <input ref={ref} className=" ring-gray-700 focus:outline-none bg-white text-black border placeholder:text-gray-800 pl-10 font-Poppins p-1.5 w-75 rounded-xl border-0.5 sm:w-100"  type="text" placeholder='Search Products' />
+     <input ref={ref} className=" border border-gray-600  focus:ring-black p-1 pl-10 md:ring-white focus:outline-none text-black bg-white md:border-white placeholder:text-gray-800 text-2xl  md:pl-10 md:p-2 rounded-4xl border-0.5 sm:w-100"  type="text" placeholder='Search Products' />
     </div>
     </form>
   );

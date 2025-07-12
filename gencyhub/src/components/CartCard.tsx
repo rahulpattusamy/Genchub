@@ -6,6 +6,9 @@ const CartCard = () => {
   const removefromcart = useShoppingstore((s) => s.removeProduct);
   return (
     <div>
+     
+
+
       <div className="flex flex-col justify-around gap-y-5">
         {cart?.map((item) => {
           return (
@@ -28,7 +31,7 @@ const CartCard = () => {
                     Quantity:
                     <div className="flex items-center w-25 justify-between ml-5">
                       <button className="btn4">-</button>{" "}
-                      <p className="text-black">{(item.quantity = 1)}</p>
+                      <p className="text-black">{item.quantity}</p>
                       <button className="btn4">+</button>
                     </div>
                   </h3>
