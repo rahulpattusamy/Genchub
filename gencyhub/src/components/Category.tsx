@@ -10,7 +10,7 @@ const Category = () => {
   return (
     <div className="hidden lg:h-[55rem] lg:w-70 p-2 md:block  md:h-[38rem] md:w-70 text-black ">
       <button
-        className={`pb-2 pl-4 md:text-xl cursor-pointer  ${
+        className={`pb-2  md:text-2xl cursor-pointer  ${
           isActive === "All Category" ? "font-bold" : "text-neutral-600"
         }`}
         onClick={() => {

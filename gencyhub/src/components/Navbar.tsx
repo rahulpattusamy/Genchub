@@ -3,9 +3,11 @@ import { LuShoppingCart } from "react-icons/lu";
 import { FaRegUserCircle } from "react-icons/fa";
 import SearchInput from "./SearchInput";
 import { useNavigate } from "react-router-dom";
+import useCarlength from "../utils/cartLength";
 
 const NavBar = () => {
   const navigate = useNavigate();
+  const cartlength = useCarlength()
   return (
     <header className="w-full top-0 z-50 sticky justify-between px-4 py-4 bg-red-400 p-5 text-white ">
       <div className="max-w-full mx-auto items-center flex justify-between">
@@ -30,7 +32,7 @@ const NavBar = () => {
           <LuShoppingCart />
         </button>
         <span className="w-6 h-6 m-15  md:ml-20 lg:text-sm bg-gray-700 lg:w-9 lg:h-9 rounded-3xl flex justify-center items-center text-center lg:ml-26 -mt-2  absolute">
-          <p className="text-sm">0</p>
+          <p className="text-sm">{cartlength}</p>
         </span>
 
         <button className="text-3xl lg:cursor-pointer relative lg:text-5xl">

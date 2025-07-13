@@ -12,26 +12,25 @@ const CartCard = () => {
      
 
 
-      <div className="flex flex-col justify-around gap-y-5">
+      <div className=" flex flex-col items-center lg:flex lg:flex-col justify-around gap-y-5">
         {cart?.map((item) => {
           const price = item.price.toFixed()
           return (
             <div className=" flex" key={item.id}>
               <div className="left">
                 <img
-                  className="w-35 h-45 object-cover"
+                  className=" md:w-35 md:h-45 object-cover"
                   src={item.thumbnail}
                   alt=""
                 />
               </div>
               <div className="right mt-1.5 ml-7">
-                <h1 className=" w-60 text2">{item.title}</h1>
+                <h1 className=" md:w-60 md:text2">{item.title}</h1>
                 <h2 className="mt-1">
-                  <span className="text2 ">Price: &#36;</span>
-                  <span className="text2">{parseInt(price)* item.quantity}</span>
+                  <span className="text2 font-bold">${parseInt(price)* item.quantity}</span>
                 </h2>
                 <div className="mt-4">
-                  <h3 className="h-5 flex items-center text-center text2">
+                  <h3 className="h-5 flex items-center text-center md:text2">
                     Quantity:
                     <div className="flex items-center w-25 justify-between ml-5">
                       <button className="btn4 " onClick={()=>decreaseQuantity(item.id)}>-</button>{" "}
@@ -49,7 +48,7 @@ const CartCard = () => {
                       <MdOutlineDelete />
                     </div>
                   </button>
-                  <button className="btn text-lg">
+                  <button className="btn mr-5 md:text-lg md:mr-0">
                     Move to wishlist
                   </button>
                 </div>
