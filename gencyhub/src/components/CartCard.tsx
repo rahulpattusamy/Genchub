@@ -4,6 +4,9 @@ import useShoppingstore from "../ShoppingStatus";
 const CartCard = () => {
   const cart = useShoppingstore((s) => s.shoppingstatus.cart);
   const removefromcart = useShoppingstore((s) => s.removeProduct);
+  const increaseQuantity = useShoppingstore(s=>s.increasequantity)
+  const decreaseQuantity = useShoppingstore(s=>s.decreasequantity)
+
   return (
     <div>
      
@@ -11,6 +14,7 @@ const CartCard = () => {
 
       <div className="flex flex-col justify-around gap-y-5">
         {cart?.map((item) => {
+          const price = item.price.toFixed()
           return (
             <div className=" flex" key={item.id}>
               <div className="left">
@@ -24,15 +28,15 @@ const CartCard = () => {
                 <h1 className=" w-60 text2">{item.title}</h1>
                 <h2 className="mt-1">
                   <span className="text2 ">Price: &#36;</span>
-                  <span className="text2">{item.price}</span>
+                  <span className="text2">{parseInt(price)* item.quantity}</span>
                 </h2>
                 <div className="mt-4">
                   <h3 className="h-5 flex items-center text-center text2">
                     Quantity:
                     <div className="flex items-center w-25 justify-between ml-5">
-                      <button className="btn4">-</button>{" "}
+                      <button className="btn4 " onClick={()=>decreaseQuantity(item.id)}>-</button>{" "}
                       <p className="text-black">{item.quantity}</p>
-                      <button className="btn4">+</button>
+                      <button className="btn4" onClick={()=>increaseQuantity(item.id)}>+</button>
                     </div>
                   </h3>
                 </div>

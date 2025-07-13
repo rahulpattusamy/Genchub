@@ -8,7 +8,7 @@ export interface Products {
   price: number;
   rating: number;
   thumbnail: string;
-  quantity?: number;
+  quantity:number
 }
 
 interface response {
