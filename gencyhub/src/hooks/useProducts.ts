@@ -6,9 +6,9 @@ export interface Products {
   id: number;
   title: string;
   price: number;
-  rating:number;
+  rating: number;
   thumbnail: string;
-  quantity:number
+  quantity?: number;
 }
 
 interface response {

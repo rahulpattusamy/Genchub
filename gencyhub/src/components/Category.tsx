@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+
 import useCategory from "../hooks/useCategory";
 import useProductquery from "../productquerystore";
 import categoryimages from "./CategoryImage";
@@ -16,7 +16,7 @@ const Category = () => {
           <button onClick={()=>{setCategory(Category.slug); console.log(Category.slug)}
           } className="  pb-2 pl-4 md:text-2xl cursor-pointer text-black ">
             {Category.name}
-          </button>
+          </button> 
         </ul>
       ))}
     </div>

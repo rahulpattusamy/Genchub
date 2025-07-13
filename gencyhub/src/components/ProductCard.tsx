@@ -8,13 +8,11 @@ const ProductCard = () => {
     const {data, error} = useProducts()
     if(error) return<p>{error.message}</p>
     
-    
-
-
   return (
     <>
      <div className="grid grid-cols-2 items-center gap-5 ml-6 md:grid-cols-2 md:gap-10 lg:grid-cols-4 lg:gap-10">
       {data?.products.map((product) => {
+     const  ratingbg =  product.rating >=4 ? "bg-green-800":"bg-red-600"
         return (
           <div className="card" key={product.id}>
             <img
@@ -23,22 +21,22 @@ const ProductCard = () => {
               alt=""
             />
             <div className="pt-4 pl-1.5  h-30 flex flex-col gap-1.5">
-              <p className="text">{product.title}</p>
+              <p className="text md:text-lg">{product.title}</p>
               <p className=" text sm:text-lg font-bold flex justify-between items-center">
-                &#36;{product.price}{" "}
+                &#36;{product.price.toFixed()}{" "}
                 <button
                   onClick={() => {
                   }}
                   className="btn2 mr-2"
                 >
-               <MdFavoriteBorder/>
+               <MdFavoriteBorder size={20}/>
                 </button>
               </p>
-              <p className="border-b mt-2"></p>
+              <p className="border-b border-gray-600"></p>
             </div>
             <div className="flex p-2  -ml-2 justify-between  items-center">
                 <AddToCart product={product}/>
-                <button className="btn p-2 bg-gray-800">{product.rating}</button>
+                <button className={`btn ${ratingbg}`}>{product.rating}</button>
             </div>
          
           </div>

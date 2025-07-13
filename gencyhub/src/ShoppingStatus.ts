@@ -1,13 +1,19 @@
 import { create } from "zustand";
 import type { Products } from "./hooks/useProducts";
 
+
+
 interface ShoppingStatus {
   cart?: Products[];
 }
 
+interface cartProduct extends Products {
+  quantity: number;
+}
+
 interface ShoppingStore {
   shoppingstatus: ShoppingStatus;
-  setCart: (cart: Products) => void;
+  setCart: (cart: cartProduct) => void;
   removeProduct: (id: number) => void;
 }
 
@@ -17,7 +23,7 @@ const useShoppingstore = create<ShoppingStore>((set) => ({
     set((state) => ({
       shoppingstatus: {
         ...state.shoppingstatus,
-        cart: [...(state.shoppingstatus.cart || []), products],
+        cart: [...(state.shoppingstatus.cart || []), {...products, quantity:1}],
       },
     })),
     removeProduct:(id)=>set((state)=>{
