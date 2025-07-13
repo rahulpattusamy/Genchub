@@ -17,11 +17,11 @@ const SearchInput = () => {
       action="search"
      className="">
     <div className="relative">
-     <div className="ml-2 pt-1.5 text-3xl sm:text-gray-500 absolute sm:pt-1.5 sm:ml-2 sm:text-4xl">
+     <div className="ml-1 pt-1 text-2xl sm:text-gray-500 absolute sm:pt-1.5 sm:ml-2 sm:text-4xl">
        <CiSearch/>
      </div>
      
-     <input ref={ref} className=" border border-gray-600  focus:ring-black p-1 pl-10 md:ring-white focus:outline-none text-black bg-white md:border-white placeholder:text-gray-800 text-2xl  md:pl-10 md:p-2 rounded-4xl border-0.5 sm:w-100"  type="text" placeholder='Search Products' />
+     <input ref={ref} className=" border border-gray-600  focus:ring-black  pl-8 text-lg md:ring-white focus:outline-none text-black bg-white md:border-white placeholder:text-gray-800 md:text-2xl  md:pl-12 md:p-2 rounded-4xl border-0.5 sm:w-100"  type="text" placeholder='Search Products' />
     </div>
     </form>
   );

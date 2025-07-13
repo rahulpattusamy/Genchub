@@ -10,7 +10,8 @@ const ProductCard = () => {
     
   return (
     <>
-     <div className="grid grid-cols-2 items-center gap-5 ml-6 md:grid-cols-2 md:gap-10 lg:grid-cols-4 lg:gap-10">
+    
+     <div className="grid grid-cols-2 items-center gap-2.5 md:grid-cols-2 lg:grid-cols-4 lg:gap-5 ">
       {data?.products.map((product) => {
      const  ratingbg =  product.rating >=4 ? "bg-green-800":"bg-red-600"
         return (
@@ -21,9 +22,9 @@ const ProductCard = () => {
               alt=""
             />
             <div className="pt-4 pl-1.5  h-30 flex flex-col gap-1.5">
-              <p className="text md:text-lg">{product.title}</p>
+              <p className="text md:text-sm">{product.title}</p>
               <p className=" text sm:text-lg font-bold flex justify-between items-center">
-                &#36;{product.price.toFixed()}{" "}
+                ${product.price.toFixed()}{" "}
                 <button
                   onClick={() => {
                   }}

@@ -30,10 +30,10 @@ const AddToCart = ({ product }: Props) => {
           !isProductinCart && setCart({...product, quantity:1});
           isProductinCart && navigate("/cart");
         }}
-        className="btn hidden text-sm lg:text-lg lg:flex ml-2"
+        className="btn hidden text-sm  lg:flex ml-2"
       >
         {isProductinCart ? "Added" : "Add to cart"}
-        {isProductinCart ? <BsCartCheck  size={30}/>: <BsCartPlus size={30}/>}
+        {isProductinCart ? <BsCartCheck  size={20}/>: <BsCartPlus size={20}/>}
       </button>
       <button
         onClick={() => {
