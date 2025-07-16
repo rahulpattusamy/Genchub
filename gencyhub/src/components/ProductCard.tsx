@@ -25,8 +25,8 @@ const ProductCard = () => {
               const ratingbg =
                 product.rating >= 4 ? "text-lime-700" : "text-orange-300";
               return (
-                <React.Fragment>
-                  <div className="card" key={product.id}>
+                <React.Fragment key={product.id}>
+                  <div className="card">
                     <img
                       className=" w-full h-20 object-cover  sm:w-full sm:h-45 sm:object-cover  md:w-full md:h-45 md:object-cover"
                       src={product.thumbnail}

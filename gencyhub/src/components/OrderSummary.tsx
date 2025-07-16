@@ -9,7 +9,7 @@ const OrderSummary = () => {
   
   if (cart)
     return (
-      <div className="priceCard mt-20 sm:mt-0">
+      <div className="priceCard mt-20 md:mt-10 lg:mt-0">
         <p className=" md:text-4xl  text-black text-center">Order Summary</p>
         <p className="pricedetails">
           Price:<span>${price.toFixed()}</span>

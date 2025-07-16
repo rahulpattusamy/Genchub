@@ -1,18 +1,31 @@
-import { useRef } from "react";
+import { useCallback, useRef } from "react";
 import { CiSearch } from "react-icons/ci";
 import useProductquery from "../productquerystore";
 import { useNavigate } from "react-router-dom";
+import debounce from 'lodash/debounce'
 
 const SearchInput = () => {
   const ref = useRef<HTMLInputElement>(null);
   const setSearchtext = useProductquery((s) => s.setSearchText);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+  const debounced = useCallback(debounce((value:string)=>{
+    setSearchtext(value);
+  },500),[]);
+
+  const handleChange = ()=>{
+    if(ref.current){
+      debounced(ref.current.value)
+    }
+  }
+
+  
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
         if (ref.current) setSearchtext(ref.current?.value);
-        navigate('/')
+        navigate('/');
       }}
       action="search"
      className="">
@@ -21,7 +34,7 @@ const SearchInput = () => {
        <CiSearch/>
      </div>
      
-     <input ref={ref} className=" border border-gray-600  focus:ring-black  pl-8 text-lg md:ring-white focus:outline-none text-black bg-white md:border-white placeholder:text-gray-800 md:text-xl  md:pl-12 md:p-2 rounded-4xl border-0.5 sm:w-100"  type="text" placeholder='Search Products' />
+     <input ref={ref} onChange={handleChange} className=" border border-gray-600  focus:ring-black  pl-8 text-lg md:ring-white focus:outline-none text-black bg-white md:border-white placeholder:text-gray-800 md:text-xl  md:pl-12 md:p-2 rounded-4xl border-0.5 sm:w-100"  type="text" placeholder='Search Products' />
     </div>
     </form>
   );
