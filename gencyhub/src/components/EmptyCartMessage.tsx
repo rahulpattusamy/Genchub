@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-
+import cartimg from "../assets/shopping.png"
 
 const EmptycartMessage = () => {
   return (
     <div className=" flex flex-col items-center">
      
       <div>
-        
+        <img className="h-60" src={cartimg} alt="" />
       </div>
       
       <div className="text-center mt-3">
