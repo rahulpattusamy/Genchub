@@ -1,20 +1,21 @@
 import { MdOutlineDelete } from "react-icons/md";
 import useShoppingstore from "../ShoppingStatus";
+import EmptycartMessage from "./EmptyCartMessage";
 
 const CartCard = () => {
   const cart = useShoppingstore((s) => s.shoppingstatus.cart);
   const removefromcart = useShoppingstore((s) => s.removeProduct);
-  const increaseQuantity = useShoppingstore(s=>s.increasequantity)
-  const decreaseQuantity = useShoppingstore(s=>s.decreasequantity)
+  const increaseQuantity = useShoppingstore((s) => s.increasequantity);
+  const decreaseQuantity = useShoppingstore((s) => s.decreasequantity);
+
+  if (!cart) return <EmptycartMessage />;
+  if (cart.length == 0) return <EmptycartMessage />;
 
   return (
     <div>
-     
-
-
       <div className=" flex flex-col items-center lg:flex lg:flex-col justify-around gap-y-5">
         {cart?.map((item) => {
-          const price = item.price.toFixed()
+          const price = item.price.toFixed();
           return (
             <div className=" flex" key={item.id}>
               <div className="left">
@@ -27,15 +28,27 @@ const CartCard = () => {
               <div className="right mt-1.5 ml-7">
                 <h1 className=" md:w-60 md:text2">{item.title}</h1>
                 <h2 className="mt-1">
-                  <span className="text2 font-bold">${parseInt(price)* item.quantity}</span>
+                  <span className="text2 font-bold">
+                    ${parseInt(price) * item.quantity}
+                  </span>
                 </h2>
                 <div className="mt-4">
                   <h3 className="h-5 flex items-center text-center md:text2">
                     Quantity:
                     <div className="flex items-center w-25 justify-between ml-5">
-                      <button className="btn4 " onClick={()=>decreaseQuantity(item.id)}>-</button>{" "}
+                      <button
+                        className="btn4 "
+                        onClick={() => decreaseQuantity(item.id)}
+                      >
+                        -
+                      </button>{" "}
                       <p className="text-black">{item.quantity}</p>
-                      <button className="btn4" onClick={()=>increaseQuantity(item.id)}>+</button>
+                      <button
+                        className="btn4"
+                        onClick={() => increaseQuantity(item.id)}
+                      >
+                        +
+                      </button>
                     </div>
                   </h3>
                 </div>

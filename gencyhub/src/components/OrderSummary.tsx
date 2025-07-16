@@ -5,8 +5,10 @@ import useCartPrice from "../utils/cartPrice";
 const OrderSummary = () => {
   const cart = useShoppingstore((s) => s.shoppingstatus.cart);
   const price = useCartPrice();
-  const cartlength = useCarlength()
-  
+  const cartlength = useCarlength();
+
+
+
   if (cart)
     return (
       <div className="priceCard mt-20 md:mt-10 lg:mt-0">
