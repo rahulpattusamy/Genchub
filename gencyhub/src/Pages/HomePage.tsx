@@ -1,7 +1,7 @@
 import CategorySelector from "../components/CategorySelector"
-import ProductCard from "../components/ProductCard"
 import SearchInput from "../components/SearchInput"
 import Category from "../components/Category"
+import ProductCard from "../components/ProductCard"
 
 
 const HomePage = () => {

@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import Apiclient from "../Service/api-client";
 import useProductendpoint from "./useProductendpoint";
 
@@ -8,20 +8,34 @@ export interface Products {
   price: number;
   rating: number;
   thumbnail: string;
-  quantity:number
+  quantity: number;
 }
 
 interface response {
   products: Products[];
+  total: number;
+  skip: number;
+  limit: number;
 }
 
 const useProducts = () => {
   const { endpoint, productquery } = useProductendpoint();
 
   const apiclient = new Apiclient<response>(endpoint);
-  return useQuery({
+  return useInfiniteQuery({
     queryKey: ["products", productquery],
-    queryFn: () => apiclient.getAll(),
+    queryFn: ({ pageParam = 0 }) =>
+      apiclient.getAll({
+        params: {
+          skip: pageParam,
+          limit: 12,
+        },
+      }),
+    getNextPageParam: (lastPage) => {
+      const nextSkip = lastPage.skip + lastPage.limit;
+      return nextSkip < lastPage.total ? nextSkip : undefined;
+    },
+    initialPageParam:0
   });
 };
 

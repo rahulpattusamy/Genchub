@@ -21,7 +21,7 @@ const OrderSummary = () => {
         <p className="pricedetails">
           Delivery Fee: <span className="text-green-500">Free</span>
         </p>
-        <p className="pricedetails  text-black">
+        <p className="pricedetails  font-bold">
           Total Amount:<span>${price.toFixed()}</span>
         </p>
 
