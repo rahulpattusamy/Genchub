@@ -29,6 +29,9 @@ const useProducts = () => {
         params: {
           skip: pageParam,
           limit: 12,
+          
+          
+
         },
       }),
     getNextPageParam: (lastPage) => {

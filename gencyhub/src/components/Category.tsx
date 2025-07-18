@@ -8,9 +8,9 @@ const Category = () => {
 
   const [isActive, setActive] = useState("");
   return (
-    <div className="hidden lg:h-[55rem] lg:w-70 p-2 md:block  md:h-[38rem] md:w-70 text-black ">
+    <div className="hidden lg:h-[55rem] lg:w-70 p-2 md:block  md:h-[38rem] md:w-70 text-black  ">
       <button
-        className={`pb-2  md:text-2xl cursor-pointer  ${
+        className={`pb-2  md:text-2xl cursor-pointer dark:text-white ${
           isActive === "All Category" ? "font-bold" : "text-neutral-600"
         }`}
         onClick={() => {
@@ -32,7 +32,7 @@ const Category = () => {
               setCategory(Category.slug);
               setActive(Category.name);
             }}
-            className={`pb-2 pl-4 md:text-xl cursor-pointer  ${
+            className={`pb-2 pl-4 md:text-xl dark:text-white cursor-pointer  ${
               isActive === Category.name ? "font-bold" : "text-neutral-600"
             }`}
           >

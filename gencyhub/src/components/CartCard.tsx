@@ -26,25 +26,25 @@ const CartCard = () => {
                 />
               </div>
               <div className="right mt-1.5 ml-7">
-                <h1 className=" md:w-60 md:text2">{item.title}</h1>
+                <h1 className=" md:w-60 md:text2 dark:text-white">{item.title}</h1>
                 <h2 className="mt-1">
                   <span className="text2 font-bold">
                     ${parseInt(price) * item.quantity}
                   </span>
                 </h2>
                 <div className="mt-4">
-                  <h3 className="h-5 flex items-center text-center md:text2">
+                  <h3 className="h-5 flex items-center text-center md:text2 dark:text-white">
                     Quantity:
                     <div className="flex items-center w-25 justify-between ml-5">
                       <button
-                        className="btn4 "
+                        className="btn4 dark:bg-neutral-700"
                         onClick={() => decreaseQuantity(item.id)}
                       >
                         -
                       </button>{" "}
-                      <p className="text-black">{item.quantity}</p>
+                      <p className="text-black dark:text-white">{item.quantity}</p>
                       <button
-                        className="btn4"
+                        className="btn4 dark:bg-neutral-700"
                         onClick={() => increaseQuantity(item.id)}
                       >
                         +
@@ -61,7 +61,7 @@ const CartCard = () => {
                       <MdOutlineDelete />
                     </div>
                   </button>
-                  <button className="btn mr-5 md:text-lg md:mr-0">
+                  <button className="btn mr-5 md:text-lg md:mr-0 dark:bg-red-400">
                     Move to wishlist
                   </button>
                 </div>

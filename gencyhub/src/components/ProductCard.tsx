@@ -17,7 +17,7 @@ const ProductCard = () => {
         dataLength={products.length}
         next={fetchNextPage}
         hasMore={!!hasNextPage}
-        loader={<p className="text-center font-bold pt-5 text-xl py-4">Loading more...</p>}
+        loader={<p className="text-center font-bold text-gray-600 pt-5 text-xl py-4">Loading...</p>}
       >
         <div className="grid grid-cols-2 items-center gap-2.5 md:grid-cols-2 lg:grid-cols-4 lg:gap-5 ">
           {data?.pages.map((P) =>
