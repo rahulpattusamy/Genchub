@@ -19,7 +19,7 @@ const ProductCard = () => {
         hasMore={!!hasNextPage}
         loader={<p className="text-center font-bold text-gray-600 pt-5 text-xl py-4">Loading...</p>}
       >
-        <div className="grid grid-cols-2 items-center gap-2.5 md:grid-cols-2 lg:grid-cols-4 lg:gap-5 ">
+        <div className="grid grid-cols-2 items-center gap-3  md:grid-cols-2 lg:grid-cols-4 lg:gap-5 ">
           {data?.pages.map((P) =>
             P.products.map((product) => {
               const ratingbg =
@@ -28,7 +28,7 @@ const ProductCard = () => {
                 <React.Fragment key={product.id}>
                   <div className="card">
                     <img
-                      className=" w-full h-20 object-cover  sm:w-full sm:h-45 sm:object-cover  md:w-full md:h-45 md:object-cover"
+                      className=" w-full h-35 object-cover  sm:w-full sm:h-45 sm:object-cover  md:w-full md:h-45 md:object-cover"
                       src={product.thumbnail}
                       alt=""
                     />

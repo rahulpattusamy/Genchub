@@ -6,7 +6,7 @@ const CategorySelector = () => {
   const { data } = useCategory();
   const setcategory = useProductquery(s=>s.setCategory)
   return (
-    <div>
+    <div className="dark:bg-black">
       <select className="border border-white rounded-sm w-60 h-10 font-bold bg-red-400 text-white ml-2 "onChange={(e)=>{ setcategory(e.target.value); console.log(e.target.value);
        } } >
         <option className="text-white" value="">All Category</option>

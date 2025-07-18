@@ -17,7 +17,7 @@ body {
 @layer components {
   .card {
     @apply   dark:text-white dark:bg-neutral-900 text-black text-sm shadow-xl rounded-sm font-light 
-   max-w-32 min-h-[17rem] overflow-hidden
+   max-w-34 min-h-[18rem] overflow-hidden
     sm:max-w-45 sm:max-h-[30rem] sm:overflow-hidden
    
   }

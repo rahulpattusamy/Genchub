@@ -29,12 +29,12 @@ const SearchInput = () => {
       }}
       action="search"
      className="">
-    <div className="relative">
-     <div className="ml-1 pt-1 text-2xl sm:text-gray-500 absolute sm:pt-2 sm:ml-2 sm:text-3xl">
+    <div className=" relative ">
+     <div className="ml-1 pt-1 text-2xl  text-black  absolute sm:pt-2 sm:ml-2 sm:text-2xl">
        <CiSearch/>
      </div>
      
-     <input ref={ref} onChange={handleChange} className=" border border-gray-600  focus:ring-black  pl-8 text-lg md:ring-white focus:outline-none text-black bg-white md:border-white placeholder:text-gray-800 md:text-xl  md:pl-12 md:p-2 rounded-4xl border-0.5 sm:w-100"  type="text" placeholder='Search Products' />
+     <input ref={ref} onChange={handleChange} className=" border border-gray-600  focus:ring-black  pl-8 text-lg md:ring-white focus:outline-none md:rounded-4xl md:bg-white md:border-white dark:bg-white placeholder:text-black md:text-xl md:w-full md:pl-10 md:p-1  w-full rounded-4xl"  type="text" placeholder='Search Products' />
     </div>
     </form>
   );

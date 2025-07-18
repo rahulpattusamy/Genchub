@@ -4,7 +4,7 @@ import { BsSun } from "react-icons/bs";
 
 const DarkModeSwitch = () => {
   const [dark, setDark] = useState(() => {
-    return localStorage.getItem("theme") === "dark";
+    return localStorage.getItem("theme") === "light";
   });
 
   useEffect(() => {
@@ -18,8 +18,8 @@ const DarkModeSwitch = () => {
     }
   }, [dark]);
 
-  return <button className="text-3xl lg:text-3xl" onClick={()=>setDark(!dark)}>
-     {dark? <BsSun/> : <BsMoonStars/>}
+  return <button className="text-2xl lg:text-3xl" onClick={()=>setDark(!dark)}>
+     {dark? <BsSun color="yellow "/> : <BsMoonStars/>}
   </button>;
 };
 
