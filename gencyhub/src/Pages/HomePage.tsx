@@ -4,6 +4,7 @@ import Category from "../components/Category"
 import ProductCard from "../components/ProductCard"
 
 
+
 const HomePage = () => {
   return (
 <>

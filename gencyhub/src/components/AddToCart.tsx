@@ -4,6 +4,7 @@ import { findproduct } from "../utils/FindProduct";
 import { useNavigate } from "react-router-dom";
 import { BsCartCheck, BsCartPlus } from "react-icons/bs";
 
+
 interface Product {
   id: number;
   title: string;
@@ -22,6 +23,7 @@ const AddToCart = ({ product }: Props) => {
   const cart = useShoppingstore((s) => s.shoppingstatus.cart);
   const isProductinCart = findproduct(cart, product.id);
   const navigate = useNavigate();
+
   
   return (
     <div>
@@ -29,6 +31,7 @@ const AddToCart = ({ product }: Props) => {
         onClick={() => {
           !isProductinCart && setCart({...product, quantity:1});
           isProductinCart && navigate("/cart");
+          
         }}
         className="btn hidden text-sm  lg:flex ml-2"
       >
@@ -40,6 +43,7 @@ const AddToCart = ({ product }: Props) => {
           !isProductinCart &&
             setCart({...product, quantity:1});
           isProductinCart && navigate("/cart");
+          
         }}
         className="btn p-2 block text-xl lg:hidden ml-2"
       >
