@@ -11,6 +11,7 @@ const Layout = () => {
       <div className="mt-120">
         <Footer />
       </div>
+      
     <div className="block  pb-16 md:hidden">
        <NavBar2/>
     </div>
