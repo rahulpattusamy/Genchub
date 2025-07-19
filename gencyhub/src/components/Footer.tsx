@@ -94,7 +94,7 @@ const Footer =()=> {
       </div>
 
       <div className="mt-6 flex justify-center items-center text-center text-white text-xs">
-       <FaRegCopyright /> <p className="ml-2">2050 GenChub. All rights reserved</p>.
+       <FaRegCopyright /> <p className="ml-2">2050 GenZhub. All rights reserved</p>.
       </div>
     </footer>
   );

@@ -10,10 +10,11 @@ const NavBar = () => {
   const navigate = useNavigate();
   const cartlength = useCarlength();
   return (
-    <header className="w-full top-0 z-50 sticky justify-between px-4 py-4 bg-red-400 p-5 text-white dark:bg-neutral-900 ">
+    <header className="w-full top-0 z-50 sticky left-0 right-0 justify-between px-4 py-4 bg-red-400 p-5 text-white dark:bg-neutral-900 ">
       <div className="max-w-full mx-auto items-center flex justify-between">
         <div>
-          <h1 className="text-2xl lg:text-4xl cursor-pointer">GenChub</h1>
+
+          <h1 onClick={()=>navigate("/")} className="text-2xl lg:text-4xl cursor-pointer">GenZhub</h1>
         </div>
         <div className="hidden md:block">
           <SearchInput />
