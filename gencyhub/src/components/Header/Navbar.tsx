@@ -10,7 +10,7 @@ const NavBar = () => {
   const navigate = useNavigate();
   const cartlength = useCarlength();
   return (
-    <header className="w-full top-0 z-50 sticky left-0 right-0 justify-between px-4 py-4 bg-red-400 p-5 text-white dark:bg-neutral-900 ">
+    <header className="w-full top-0 z-50 sticky left-0 right-0 justify-between px-4 py-4  p-5 text-white bg-red-400  shadow-lg dark:bg-neutral-900 ">
       <div className="max-w-full mx-auto items-center flex justify-between">
         <div>
 
@@ -24,7 +24,7 @@ const NavBar = () => {
           <button className=" hidden md:block text-3xl lg:cursor-pointer relative lg:text-4xl">
             <MdFavoriteBorder />
           </button>
-          <span className="hidden w-6 h-6 ml-5  lg:text-sm bg-gray-700 lg:w-8 lg:h-8 rounded-3xl md:flex justify-center items-center text-center lg:ml-5 -mt-2  absolute dark:bg-white dark:text-black">
+          <span className="hidden w-6 h-6 ml-5  lg:text-sm bg-black lg:w-8 lg:h-8 rounded-3xl md:flex justify-center items-center text-center lg:ml-5 -mt-2  absolute dark:bg-white dark:text-black">
             <p className="text-sm">0</p>
           </span>
           <button
@@ -33,7 +33,7 @@ const NavBar = () => {
           >
             <LuShoppingCart />
           </button>
-          <span className="hidden  w-6 h-6 m-15  md:ml-20 lg:text-sm bg-gray-700 lg:w-8 lg:h-8 rounded-3xl md:flex justify-center items-center text-center lg:ml-22 -mt-2  absolute dark:bg-white dark:text-black">
+          <span className="hidden  w-6 h-6 m-15  md:ml-20 lg:text-sm bg-black lg:w-8 lg:h-8 rounded-3xl md:flex justify-center items-center text-center lg:ml-22 -mt-2  absolute dark:bg-white dark:text-black">
             <p className="text-sm">{cartlength}</p>
           </span>
 
