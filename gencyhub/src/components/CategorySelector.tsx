@@ -5,7 +5,7 @@ import useProductquery from "../productquerystore";
 const CategorySelector = () => {
   const { data } = useCategory();
   const setcategory = useProductquery(s=>s.setCategory)
-  const cate = useProductquery(s=>s.productquery.category)
+
   return (
     <div className="dark:bg-black">
       <select className=" outline-0 rounded-sm w-60 h-10 font-bold bg-red-400 text-white ml-2 "onChange={(e)=>{ setcategory(e.target.value);
@@ -13,8 +13,8 @@ const CategorySelector = () => {
         <option className="text-black bg-white" value="">All Category</option>
         {data?.map((category, index) => (
           <option className="text-black bg-white" key={index} value={category.slug}>
-           {cate ? `Category: ${category.name}` : `${category.name}`}
-          </option>
+           {category.name}
+          </option> 
         ))}
       </select>
     </div>

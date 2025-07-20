@@ -14,9 +14,7 @@ const NavBar2 = () => {
           <button className="text-3xl lg:cursor-pointer relative lg:text-4xl">
             <MdFavoriteBorder />
           </button>
-          <span className="w-6 h-6  -ml-25   lg:text-sm bg-gray-700 lg:w-8 lg:h-8 rounded-3xl flex justify-center items-center text-center lg:ml-5 -mt-2  absolute dark:bg-white dark:text-black">
-            <p className="text-sm">0</p>
-          </span>
+         
           <button
             onClick={() => navigate("/cart")}
             className="text-3xl lg:cursor-pointer relative lg:text-4xl"

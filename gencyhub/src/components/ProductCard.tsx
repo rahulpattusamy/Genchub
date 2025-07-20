@@ -4,6 +4,7 @@ import AddToCart from "./AddToCart";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import useProductquery from "../productquerystore";
+import { Link } from "react-router-dom";
 
 const ProductCard = () => {
   const { data, error, fetchNextPage, hasNextPage } = useProducts();
@@ -33,14 +34,16 @@ const ProductCard = () => {
                 product.rating >= 4 ? "text-lime-700" : "text-orange-300";
               return (
                 <React.Fragment key={product.id}>
-                  <div className="card">
+                  <div className="card hover:cursor-pointer rounded-xl hover:scale-105 transition-transform duration-400">
                     <img
-                      className=" w-full h-35 object-cover  sm:w-full sm:h-45 sm:object-cover  md:w-full md:h-45 md:object-cover"
+                      className=" w-full h-35 object-cover  sm:w-full sm:h-45 sm:object-cover  md:w-full md:h-45 md:object-cover "
                       src={product.thumbnail}
                       alt=""
                     />
                     <div className="pt-4 pl-1.5  h-30 flex flex-col gap-1.5">
-                      <p className="text md:text-sm">{product.title}</p>
+                      <Link to={'/products/' + product.id }>
+                      <p className="text md:text-sm hover:underline">{product.title}</p>
+                      </Link>
                       <p className=" text sm:text-lg font-bold flex justify-between items-center">
                         ${product.price.toFixed()}{" "}
                         <button onClick={() => {}} className="btn2 mr-2">
