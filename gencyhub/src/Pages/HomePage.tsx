@@ -1,42 +1,31 @@
-import CategorySelector from "../components/CategorySelector";
-import SearchInput from "../components/SearchInput";
-import Category from "../components/Category";
-import ProductCard from "../components/ProductCard";
-import { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import categoryimages from "../components/CategoryImage"
+import useCategory from "../hooks/useCategory";
+import useProductquery from "../productquerystore";
 
 const HomePage = () => {
+     const { data } = useCategory();
+  const setCategory = useProductquery((s) => s.setCategory);
+ const navigate =  useNavigate()
   return (
-    <>
-      <div className="block mt-4 ml-1 sm:hidden">
-        <SearchInput />
-      </div>
-      <div className="block bg-white mt-4 ml-2 sm:hidden">
-        <CategorySelector />
-      </div>
-      <div className="grid grid-cols-12 gap-4 mt-10 ml-4">
-        <div className="col-span-3 md:col-span-5 hidden sm:block lg:col-span-3">
-          <Category />
-        </div>
-
-        <div className="col-span-12 md:col-span-7 lg:col-span-9">
-          <Toaster
-            position="top-center"
-            reverseOrder={false}
-            toastOptions={{style:{
-            backgroundColor:"white",
-            color:"#1f2937",
-            fontWeight:"500",
-            padding:"1px",
-            marginTop:"4rem"
-          },iconTheme: {
-    primary: '#166534',
-  }}}
+     <>
+     <p className=" ml-10 mt-5 md:block text-xl font-medium absolute md:mt-5 md:ml-21 dark:text-white">Product Category</p>
+    <div className="grid grid-cols-2 pl-10 pt-20 gap-y-10 md:p-20 lg:grid-cols-4 lg:p-20 relative">
+      {data.map(category=>
+      <div className="card2">
+      <img
+            className="h-40 w-full hover:cursor-pointer rounded-xl hover:scale-110 transition-transform duration-300 relative md:h-48 md:w-full md:rounded-xl "
+            src={categoryimages[category.slug]}
+            alt=""
+            onClick={()=>{setCategory(category.name);
+            navigate('/product')}
+            }
           />
-          <ProductCard />
-        </div>
-      </div>
+         <p className="bg-white/10 backdrop-blur-xl border border-white/20 pl-2 absolute -mt-6 rounded-b-xl w-30  md:-mt-6 md:w-55 md:rounded-b-xl"><span className="  font-medium text-black dark:text-white">{category.name}</span></p>
+          </div>)}
+    </div>
     </>
-  );
-};
+  )
+}
 
-export default HomePage;
+export default HomePage

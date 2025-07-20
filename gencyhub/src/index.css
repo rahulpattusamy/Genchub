@@ -21,6 +21,11 @@ body {
     sm:max-w-45 sm:max-h-[30rem] sm:overflow-hidden
    
   }
+  .card2{
+    @apply 
+    max-h-[10rem] max-w-30 overflow-hidden rounded-2xl  
+    md:max-h-[20rem] md:max-w-55 md:overflow-hidden md:rounded-2xl
+  }
 
   .btn {
     @apply flex items-center gap-2 bg-red-400 text-white font-bold text-xs  p-1 rounded hover:cursor-pointer transform-3d cursor-pointer transition transform active:scale-110 dark:bg-neutral-950 ;
@@ -54,7 +59,7 @@ body {
   .text{
     @apply 
     text-xs sm:text-black sm:text-sm
-    font-bold
+    font-medium
      dark:text-white
   }
 

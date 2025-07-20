@@ -3,11 +3,13 @@ import useProducts from "../hooks/useProducts";
 import AddToCart from "./AddToCart";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import useProductquery from "../productquerystore";
 
 const ProductCard = () => {
   const { data, error, fetchNextPage, hasNextPage } = useProducts();
   if (error) return <p>{error.message}</p>;
   const products = data?.pages.flatMap((page) => page.products) || [];
+  const category = useProductquery((s) => s.productquery.category);
   const InfiniteScrollComponent = InfiniteScroll as unknown as React.FC<any>;
 
   return (
@@ -17,9 +19,14 @@ const ProductCard = () => {
         dataLength={products.length}
         next={fetchNextPage}
         hasMore={!!hasNextPage}
-        loader={<p className="text-center font-bold text-gray-600 pt-5 text-xl py-4">Loading...</p>}
+        loader={
+          <p className="text-center font-bold text-gray-600 pt-5 text-xl py-4">
+            Loading...
+          </p>
+        }
       >
-        <div className="grid grid-cols-2 items-center gap-3  md:grid-cols-2 lg:grid-cols-4 lg:gap-5 ">
+        {category && <p className="pl-7 hidden  md:block -mt-8 absolute font-bold text-xl dark:text-white">Category: <span className="text-lg font-light">{category}</span></p>}{" "}
+        <div className="grid grid-cols-2 items-center pl-5 gap-3  md:grid-cols-2 lg:grid-cols-4 lg:gap-5 relative">
           {data?.pages.map((P) =>
             P.products.map((product) => {
               const ratingbg =
