@@ -30,6 +30,7 @@ const ProductPage = () => {
             marginTop:"4rem"
           },iconTheme: {
     primary: '#166534',
+    secondary:'#ffffff'
   }}}
           />
           <ProductCard />

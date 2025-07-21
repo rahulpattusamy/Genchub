@@ -22,6 +22,7 @@ const ProductDetail = () => {
             marginTop:"4rem"
           },iconTheme: {
     primary: '#166534',
+    secondary:'#ffffff'
   }}}
           />
       <div>
