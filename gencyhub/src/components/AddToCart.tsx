@@ -3,16 +3,10 @@ import { findproduct } from "../utils/FindProduct";
 import { useNavigate } from "react-router-dom";
 import { BsCartCheck, BsCartPlus } from "react-icons/bs";
 import { toast } from "react-hot-toast";
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  rating: number;
-  thumbnail: string;
-}
+import type { Products } from "../hooks/useProducts";
 
 interface Props {
-  product: Product;
+  product: Products;
 }
 
 const AddToCart = ({ product }: Props) => {
@@ -25,9 +19,9 @@ const AddToCart = ({ product }: Props) => {
     <div>
       <button
         onClick={() => {
+          !isProductinCart && setCart({ ...product, quantity: 1 });
           !isProductinCart &&
-           setCart({ ...product, quantity: 1 });
-           !isProductinCart && toast.success("Added to Cart", { duration: 1300 });
+            toast.success("Added to Cart", { duration: 1300 });
           isProductinCart && navigate("/cart");
         }}
         className="btn hidden text-sm  lg:flex ml-2"

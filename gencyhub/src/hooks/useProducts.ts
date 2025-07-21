@@ -8,7 +8,11 @@ export interface Products {
   price: number;
   rating: number;
   thumbnail: string;
+  images:string[]
   quantity: number;
+  description:string
+  stock:number
+  discountPercentage:number
 }
 
 interface response {
