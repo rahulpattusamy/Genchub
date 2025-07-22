@@ -29,7 +29,7 @@ const ProductDetail = () => {
         <img className="h-90" src={data?.images[Img]} />
         <div className=" w-70 flex justify-between gap-5">
           {data?.images.map((img, index) => (
-            <ul className="">
+            <ul className="" key={index}>
               <li className="" key={index}>
                 {" "}
                 <img

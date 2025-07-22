@@ -11,8 +11,8 @@ const HomePage = () => {
      <>
      <p className=" ml-10 mt-5 md:block text-xl font-medium absolute md:mt-5 md:ml-21 dark:text-white">Product Category</p>
     <div className="grid grid-cols-2 pl-10 pt-20 gap-y-10 md:p-20 lg:grid-cols-4 lg:p-20 relative">
-      {data.map(category=>
-      <div className="card2">
+      {data.map((category, index)=>
+      <div className="card2" key={index}>
       <img
             className="h-40 w-full hover:cursor-pointer rounded-xl hover:scale-110 transition-transform duration-300 relative md:h-48 md:w-full md:rounded-xl "
             src={categoryimages[category.slug]}
