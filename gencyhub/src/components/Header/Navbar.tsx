@@ -10,7 +10,7 @@ const NavBar = () => {
   const navigate = useNavigate();
   const cartlength = useCarlength();
   return (
-    <header className="w-full top-0 z-50 sticky left-0 right-0 justify-between px-4 py-4  p-5 text-white  bg-red-400  shadow-lg dark:bg-neutral-900 ">
+    <header className="w-full top-0 z-50 sticky left-0 right-0 justify-between px-4 py-4  p-5 text-white  bg-rose-400  shadow-lg dark:bg-neutral-800 ">
       <div className="max-w-full mx-auto items-center flex justify-between">
         <div>
 
@@ -20,7 +20,7 @@ const NavBar = () => {
           <SearchInput />
         </div>
 
-        <div className="flex gap-4  lg:flex shrink-0 md:gap-4 lg:gap-8">
+        <div className="flex gap-4 items-center  lg:flex shrink-0 md:gap-4 lg:gap-8">
            <button className="text-3xl cursor-pointer" onClick={()=>navigate('/product')}><FaShoppingBag/></button>
           <button className=" hidden md:block text-3xl lg:cursor-pointer relative lg:text-3xl">
             <MdFavoriteBorder />
@@ -30,10 +30,11 @@ const NavBar = () => {
             className="hidden md:block text-3xl lg:cursor-pointer relative lg:text-3xl"
           >
             <LuShoppingCart />
-          </button>
-          <span className="hidden  w-6 h-6 m-15  md:ml-28 lg:text-sm bg-black lg:w-8 lg:h-8 rounded-3xl md:flex justify-center items-center text-center lg:ml-35 -mt-2  absolute dark:bg-white dark:text-black">
+             <span className="hidden  w-4 h-4 ml-4    lg:text-sm bg-black lg:w-6 lg:h-6 rounded-3xl md:flex justify-center items-center text-center  -mt-9  absolute dark:bg-white dark:text-black">
             <p className="text-sm">{cartlength}</p>
           </span>
+          </button>
+         
 
           <button className="hidden md:block text-3xl lg:cursor-pointer relative lg:text-3xl">
             <FaRegUserCircle />
