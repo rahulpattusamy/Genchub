@@ -1,6 +1,6 @@
 import CategorySelector from "../components/CategorySelector";
 import SearchInput from "../components/SearchInput";
-import Category from "../components/Category";
+import Category from "../components/CategoryList";
 import ProductCard from "../components/ProductCard";
 import { Toaster } from "react-hot-toast";
 

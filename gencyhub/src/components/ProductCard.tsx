@@ -27,7 +27,7 @@ const ProductCard = () => {
         }
       >
         {category && <p className="pl-7 hidden  md:block -mt-8 absolute font-bold text-xl dark:text-white">Category: <span className="text-lg font-light">{category}</span></p>}{" "}
-        <div className="grid grid-cols-2 items-center pl-5 gap-3  md:grid-cols-2 lg:grid-cols-4 lg:gap-5 relative">
+        <div className="grid grid-cols-2 items-center pl-5 gap-3  md:grid-cols-2 lg:grid-cols-4 lg:gap-5 relative overflow-hidden h-full">
           {data?.pages.map((P) =>
             P.products.map((product) => {
               const ratingbg =

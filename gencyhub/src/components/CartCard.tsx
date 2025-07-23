@@ -1,6 +1,7 @@
 import { MdOutlineDelete } from "react-icons/md";
 import useShoppingstore from "../ShoppingStatus";
 import EmptycartMessage from "./EmptyCartMessage";
+import { Link } from "react-router-dom";
 
 const CartCard = () => {
   const cart = useShoppingstore((s) => s.shoppingstatus.cart);
@@ -9,8 +10,7 @@ const CartCard = () => {
   const decreaseQuantity = useShoppingstore((s) => s.decreasequantity);
 
   if (!cart) return <EmptycartMessage />;
-  if (cart.length == 0) return <EmptycartMessage />;
-
+  if (cart.length == 0) return <EmptycartMessage />
   return (
     <div>
       <div className=" flex flex-col items-center lg:flex lg:flex-col justify-around gap-y-5">
@@ -26,7 +26,10 @@ const CartCard = () => {
                 />
               </div>
               <div className="right mt-1.5 ml-7">
-                <h1 className=" md:w-60 md:text2 dark:text-white">{item.title}</h1>
+                <Link to={'/products/' + item.id}>
+                 <h1 className=" md:w-60 md:text2 dark:text-white hover:underline " >{item.title}</h1>
+                </Link>
+               
                 <h2 className="mt-1">
                   <span className="text2 font-bold">
                     ${parseInt(price) * item.quantity}

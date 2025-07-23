@@ -8,7 +8,7 @@ const Category = () => {
 
   const [isActive, setActive] = useState("");
   return (
-    <div className="hidden lg:h-[55rem] lg:w-70 p-2 md:block  md:h-[38rem] md:w-70 text-black  ">
+    <div className="hidden lg:h-full lg:w-70 p-2 md:block  md:h-full md:w-70 text-black  ">
       <button
         className={`pb-2  md:text-2xl cursor-pointer dark:text-white ${
           isActive === "All Category" ? "font-bold" : "font-medium"

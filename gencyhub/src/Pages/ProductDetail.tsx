@@ -26,7 +26,7 @@ const ProductDetail = () => {
   }}}
           />
       <div>
-        <img className="h-90" src={data?.images[Img]} />
+        <img className=" h-50 md:h-90" src={data?.images[Img]} />
         <div className=" w-70 flex justify-between gap-5">
           {data?.images.map((img, index) => (
             <ul className="" key={index}>
@@ -49,9 +49,9 @@ const ProductDetail = () => {
         </div>
       </div>
       <div className="mt-5 md:mt-0 flex flex-col gap-4">
-        <p className="text-2xl font-medium dark:text-white">{data?.title}</p>
+        <p className="text-xl md:text-2xl font-medium dark:text-white">{data?.title}</p>
         <p className="font-bold text-3xl dark:text-white">${data?.price.toFixed()}</p>
-        <p className=" text-lg w-70 md:w-full md:text-xl text-gray-800 font-light dark:text-white">{data?.description}</p>
+        <p className=" text-sm w-60 md:w-full md:text-xl text-gray-800 font-light dark:text-white">{data?.description}</p>
         <p
           className={`${
             (data?.rating || 0) >= 4 ? "bg-lime-700" : "bg-orange-300"
@@ -68,7 +68,7 @@ const ProductDetail = () => {
         </h2>
         <h2 className="font-light text-2xl dark:text-white">Total: {data?.stock}</h2>
         <div className="-ml-2 flex gap-4">
-          {data && <AddToCart product={data!} /> }
+          {data && <AddToCart  product={data!} /> }
           <p className="btn bg-gray-900">{data?.discountPercentage}%OFF</p>
         </div>
   

@@ -42,9 +42,9 @@ const SearchInput = () => {
         <input
           ref={ref}
           onChange={handleChange}
-          className=" transition-all duration-300  border placeholder-black text-black bg-white border-gray-600  focus:ring-black  pl-8 text-lg  focus:outline-none md:rounded-4xl  md:border-white   md:text-xl md:w-100 md:pl-10 md:p-1  w-full rounded-4xl"
+          className=" transition-all duration-300  border placeholder-black text-black bg-white border-gray-600  focus:ring-black  pl-8 text-sm  focus:outline-none md:rounded-4xl  md:border-white   md:text-lg p-2 md:w-100 md:pl-10 md:p-1  w-full rounded-4xl"
           type="text"
-          placeholder="Search Products..."
+          placeholder="Search Products"
         />
       </div>
     </form>
