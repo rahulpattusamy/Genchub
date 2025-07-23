@@ -1,27 +1,16 @@
 import { create } from "zustand";
+import type { User } from "firebase/auth";
 
-type User = {
-  id: number;
-  username: string;
-  token: string;
-};
-
-type AuthStore = {
+interface AuthState {
   user: User | null;
-  isLoggedIn: boolean;
-  login: (user: User) => void;
-  logout: () => void;
-};
+  setUser: (user: User | null) => void;
+}
 
-export const useAuthStore = create<AuthStore>((set) => ({
-  user: JSON.parse(localStorage.getItem("user") || "null"),
-  isLoggedIn: !!localStorage.getItem("user"),
-  login: (user) => {
-    localStorage.setItem("user", JSON.stringify(user));
-    set({ user, isLoggedIn: true });
-  },
-  logout: () => {
-    localStorage.removeItem("user");
-    set({ user: null, isLoggedIn: false });
-  },
+ const useAuthStore = create<AuthState>((set) => ({
+  user: null,
+  setUser: (user) => set({ user }),
 }));
+
+export default useAuthStore
+
+

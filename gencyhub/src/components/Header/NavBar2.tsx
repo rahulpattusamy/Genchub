@@ -25,7 +25,7 @@ const NavBar2 = () => {
             <p className="text-sm">{cartlength}</p>
           </span>
 
-          <button className="text-3xl lg:cursor-pointer relative lg:text-4xl">
+          <button onClick={()=>navigate('/login')} className="text-3xl lg:cursor-pointer relative lg:text-4xl">
             <FaRegUserCircle />
           </button>
         </div>

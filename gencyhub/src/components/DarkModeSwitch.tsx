@@ -19,7 +19,7 @@ const DarkModeSwitch = () => {
   return <button
       onClick={() => setDark(!dark)}
       className={`w-10 h-6 flex border border-white items-center rounded-full p-1 transition-colors duration-300 cursor-pointer ${
-        dark ?  'bg-gray-800':'bg-red-400' 
+        dark ?  'bg-gray-800':'bg-rose-400' 
       }`}
     >
       <div

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { BsCartCheck, BsCartPlus } from "react-icons/bs";
 import { toast } from "react-hot-toast";
 import type { Products } from "../hooks/useProducts";
+import useAuthStore from "../authstore";
 
 interface Props {
   product: Products;
@@ -14,11 +15,18 @@ const AddToCart = ({ product }: Props) => {
   const cart = useShoppingstore((s) => s.shoppingstatus.cart);
   const isProductinCart = findproduct(cart, product.id);
   const navigate = useNavigate();
+  const user = useAuthStore((s) => s.user);
 
   return (
     <div>
       <button
         onClick={() => {
+          if (!user) {
+            toast.error("Please login or signup", {
+              duration: 1500,
+            });
+            return;
+          }
           !isProductinCart && setCart({ ...product, quantity: 1 });
           !isProductinCart &&
             toast.success("Added to Cart", { duration: 1300 });

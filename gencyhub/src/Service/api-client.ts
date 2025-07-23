@@ -14,8 +14,16 @@ class Apiclient<T> {
     return axiosInstance.get<T>(this.endpoint, config).then((res) => res.data);
   };
 
-  get = (id?: string | number ) => {
-    return axiosInstance.get<T>(this.endpoint + `/${id}`).then((res) => res.data);
+  get = (id?: string | number) => {
+    return axiosInstance
+      .get<T>(this.endpoint + `/${id}`)
+      .then((res) => res.data);
+  };
+
+  login = (username: string, password: string) => {
+    return axiosInstance
+      .post<T>("/auth/login", { username, password })
+      .then((res) => res.data);
   };
 }
 
