@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import useCategory from "../hooks/useCategory";
-import useProductquery from "../productquerystore";
+import useProductquery from "../store/productquerystore";
 import categoryimages from "./CategoryImage";
 
 const CategoryCard = () => {
@@ -8,7 +8,7 @@ const CategoryCard = () => {
   const setCategory = useProductquery((s) => s.setCategory);
   const navigate = useNavigate();
   return (
-    <div> 
+    <div>
       <div className="grid grid-cols-2 pl-10 pt-5 gap-y-10 md:pl-30 lg:grid-cols-4 lg:pl-40 relative">
         {data.map((category, index) => (
           <div className="card2" key={index}>

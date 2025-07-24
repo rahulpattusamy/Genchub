@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { signIn,signUp, logOut  } from "../Service/auth-service";
+import { signIn,signUp  } from "../Service/auth-service";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 

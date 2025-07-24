@@ -1,13 +1,9 @@
-import useShoppingstore from "../ShoppingStatus";
+import useShoppingstore from "../store/ShoppingStatus";
 
+const useCarlength = () => {
+  const cart = useShoppingstore((s) => s.shoppingstatus.cart);
 
-const useCarlength = ()=>{
- const cart = useShoppingstore((s) => s.shoppingstatus.cart);
-     
-     return  cart?.reduce((acc, result) => acc + result.quantity, 0) || 0
-       
-}
+  return cart?.reduce((acc, result) => acc + result.quantity, 0) || 0;
+};
 
-;
-
-export default useCarlength
+export default useCarlength;

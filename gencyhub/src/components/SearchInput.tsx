@@ -1,6 +1,6 @@
 import { useCallback, useRef } from "react";
 import { CiSearch } from "react-icons/ci";
-import useProductquery from "../productquerystore";
+import useProductquery from "../store/productquerystore";
 import { useNavigate } from "react-router-dom";
 import debounce from "lodash/debounce";
 
@@ -8,8 +8,6 @@ const SearchInput = () => {
   const ref = useRef<HTMLInputElement>(null);
   const setSearchtext = useProductquery((s) => s.setSearchText);
   const navigate = useNavigate();
-
-
 
   const debounced = useCallback(
     debounce((value: string) => {

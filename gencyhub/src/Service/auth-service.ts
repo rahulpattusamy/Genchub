@@ -4,7 +4,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import useAuthStore from "../authstore";
+import useAuthStore from "../store/authstore";
 
 export const signUp = async (email: string, password: string) => {
   const { setUser } = useAuthStore.getState();
@@ -22,6 +22,8 @@ export const logOut = async () => {
   const { setUser } = useAuthStore.getState();
   await signOut(auth);
   setUser(null);
+   
+  
 };
 
 

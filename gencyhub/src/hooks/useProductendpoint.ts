@@ -1,19 +1,18 @@
-import useProductquery from "../productquerystore"
-
+import useProductquery from "../store/productquerystore";
 
 const useProductendpoint = () => {
-  const productquery = useProductquery(s=>s.productquery)
-  const  {searchText, category}  = productquery
+  const productquery = useProductquery((s) => s.productquery);
+  const { searchText, category } = productquery;
 
-  let endpoint = '/products'
+  let endpoint = "/products";
 
-  if(searchText){
-     endpoint = `/products/search?q=${searchText}`;
-  }else if (category){
-     endpoint = `/products/category/${category}`;
+  if (searchText) {
+    endpoint = `/products/search?q=${searchText}`;
+  } else if (category) {
+    endpoint = `/products/category/${category}`;
   }
 
-  return {endpoint, productquery}
-}
+  return { endpoint, productquery };
+};
 
-export default useProductendpoint
+export default useProductendpoint;

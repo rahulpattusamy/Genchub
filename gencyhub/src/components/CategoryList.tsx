@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useCategory from "../hooks/useCategory";
-import useProductquery from "../productquerystore";
+import useProductquery from "../store/productquerystore";
 import categoryimages from "./CategoryImage";
 const Category = () => {
   const { data } = useCategory();

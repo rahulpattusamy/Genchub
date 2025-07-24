@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { Products } from "./hooks/useProducts";
+import type { Products } from "../hooks/useProducts";
 
 interface ShoppingStatus {
   cart?: Products[];
@@ -15,7 +15,9 @@ interface ShoppingStore {
   removeProduct: (id: number) => void;
   increasequantity: (id: number) => void;
   decreasequantity: (id: number) => void;
+  clearCart:()=>void
 }
+
 
 const useShoppingstore = create<ShoppingStore>((set) => ({
   shoppingstatus: {},
@@ -59,6 +61,14 @@ const useShoppingstore = create<ShoppingStore>((set) => ({
               }
             : item
         ),
+      },
+    })),
+
+     clearCart: () =>
+    set((state) => ({
+      shoppingstatus: {
+        ...state.shoppingstatus,
+        cart: [],
       },
     })),
 }));

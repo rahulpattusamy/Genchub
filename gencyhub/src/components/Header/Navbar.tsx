@@ -5,32 +5,25 @@ import SearchInput from "../SearchInput";
 import { useNavigate } from "react-router-dom";
 import useCarlength from "../../utils/cartLength";
 import DarkModeSwitch from "../DarkModeSwitch";
-import useAuthStore from "../../authstore";
+import useAuthStore from "../../store/authstore";
 import toast from "react-hot-toast";
 import { logOut } from "../../Service/auth-service";
+import useShoppingstore from "../../store/ShoppingStatus";
 
 const NavBar = () => {
   const navigate = useNavigate();
   const cartlength = useCarlength();
   const user = useAuthStore((s) => s.user);
+  const clearcart = useShoppingstore(s=>s.clearCart)
 
   const handleLogout = async () => {
     try {
       await logOut();
+      clearcart()
       toast.success("Logged out successfully");
       navigate("/login");
     } catch (err: any) {
       toast.error("Logout failed");
-    }
-  };
-
-  const handlebutton = () => {
-    if (!user) {
-      <FaRegUserCircle />;
-    }
-
-    if (user) {
-      <p>Logout</p>;
     }
   };
 
@@ -71,10 +64,11 @@ const NavBar = () => {
 
           {user ? (
             <button
-              onClick={
-                handleLogout}
+              onClick={handleLogout}
               className="hidden md:block text-3xl lg:cursor-pointer relative lg:text-3xl"
-            >Logout</button>
+            >
+              Logout
+            </button>
           ) : (
             <button
               onClick={() => {
@@ -82,7 +76,9 @@ const NavBar = () => {
                 handleLogout;
               }}
               className="hidden md:block text-3xl lg:cursor-pointer relative lg:text-3xl"
-            ><FaRegUserCircle/></button>
+            >
+              <FaRegUserCircle />
+            </button>
           )}
           <DarkModeSwitch />
         </div>

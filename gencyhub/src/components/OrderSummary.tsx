@@ -1,4 +1,4 @@
-import useShoppingstore from "../ShoppingStatus";
+import useShoppingstore from "../store/ShoppingStatus";
 import useCarlength from "../utils/cartLength";
 import useCartPrice from "../utils/cartPrice";
 
@@ -6,8 +6,6 @@ const OrderSummary = () => {
   const cart = useShoppingstore((s) => s.shoppingstatus.cart);
   const price = useCartPrice();
   const cartlength = useCarlength();
-
-
 
   if (cart)
     return (
