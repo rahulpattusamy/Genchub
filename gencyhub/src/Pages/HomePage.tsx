@@ -2,7 +2,9 @@ import HeroSection from "../components/HeroSection";
 import CategoryCard from "../components/CategoryCard";
 import CtaSection from "../components/CtaSection";
 
+
 const HomePage = () => {
+  
   return (
     <div className="flex flex-col mt-10 w-full">
       <div className="md:-ml-0">

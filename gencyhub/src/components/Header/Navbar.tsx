@@ -8,20 +8,19 @@ import DarkModeSwitch from "../DarkModeSwitch";
 import useAuthStore from "../../store/authstore";
 import toast from "react-hot-toast";
 import { logOut } from "../../Service/auth-service";
-import useShoppingstore from "../../store/ShoppingStatus";
+import auth from "../../config/firebase-config";
 
 const NavBar = () => {
   const navigate = useNavigate();
   const cartlength = useCarlength();
   const user = useAuthStore((s) => s.user);
-  const clearcart = useShoppingstore(s=>s.clearCart)
+  const currentUser = auth.currentUser;
 
   const handleLogout = async () => {
     try {
       await logOut();
-      clearcart()
       toast.success("Logged out successfully");
-      navigate("/login");
+      navigate("/");
     } catch (err: any) {
       toast.error("Logout failed");
     }
@@ -58,7 +57,7 @@ const NavBar = () => {
           >
             <LuShoppingCart />
             <span className="hidden  w-4 h-4 ml-4    lg:text-sm bg-black lg:w-6 lg:h-6 rounded-3xl md:flex justify-center items-center text-center  -mt-9  absolute dark:bg-white dark:text-black">
-              <p className="text-sm">{cartlength}</p>
+              <p className="text-sm">{currentUser ? cartlength : '0'}</p>
             </span>
           </button>
 

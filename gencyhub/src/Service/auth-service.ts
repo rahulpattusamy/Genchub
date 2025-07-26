@@ -22,8 +22,6 @@ export const logOut = async () => {
   const { setUser } = useAuthStore.getState();
   await signOut(auth);
   setUser(null);
-   
-  
 };
 
 

@@ -1,76 +1,99 @@
 import { create } from "zustand";
 import type { Products } from "../hooks/useProducts";
+import auth from "../config/firebase-config";
+import {
+  saveCartToLocalStorage,
+  getCartFromLocalStorage,
+} from "../utils/localStorage";
 
-interface ShoppingStatus {
-  cart?: Products[];
+export interface cartProduct extends Products {
+  quantity: number;
 }
 
-interface cartProduct extends Products {
-  quantity: number;
+interface ShoppingStatus {
+  cart?: cartProduct[];
 }
 
 interface ShoppingStore {
   shoppingstatus: ShoppingStatus;
-  setCart: (Products: cartProduct) => void;
+  setCart: (product: cartProduct) => void;
   removeProduct: (id: number) => void;
   increasequantity: (id: number) => void;
   decreasequantity: (id: number) => void;
-  clearCart:()=>void
+  loadCartFromLocalStorage: () => void;
 }
 
+const useShoppingstore = create<ShoppingStore>((set, get) => ({
+  shoppingstatus: {
+    cart: [],
+  },
 
-const useShoppingstore = create<ShoppingStore>((set) => ({
-  shoppingstatus: {},
-  setCart: (products) =>
-    set((state) => {
-      const updatedCart = [
-        ...(state.shoppingstatus.cart || []),
-        { ...products, quantity: 1 },
-      ];
-      return {
-        shoppingstatus: { ...state.shoppingstatus, cart: updatedCart },
-      };
-    }),
+  setCart: (product) => {
+    const user = auth.currentUser;
+    if (!user) return;
 
-  removeProduct: (id) =>
-    set((state) => ({
-      shoppingstatus: {
-        ...state.shoppingstatus,
-        cart: state.shoppingstatus.cart?.filter((p) => p.id !== id),
-      },
-    })),
+    const currentCart = get().shoppingstatus.cart || [];
+    const exists = currentCart.find((item) => item.id === product.id);
 
-  increasequantity: (id) =>
-    set((state) => ({
-      shoppingstatus: {
-        ...state.shoppingstatus,
-        cart: state.shoppingstatus.cart?.map((item) =>
-          item.id == id ? { ...item, quantity: item.quantity + 1 } : item
-        ),
-      },
-    })),
-  decreasequantity: (id) =>
-    set((state) => ({
-      shoppingstatus: {
-        ...state.shoppingstatus,
-        cart: state.shoppingstatus.cart?.map((item) =>
-          item.id == id
-            ? {
-                ...item,
-                quantity: item.quantity > 1 ? item.quantity - 1 : item.quantity,
-              }
+    const updatedCart = exists
+      ? currentCart.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
             : item
-        ),
-      },
-    })),
+        )
+      : [...currentCart, { ...product, quantity: 1 }];
 
-     clearCart: () =>
-    set((state) => ({
-      shoppingstatus: {
-        ...state.shoppingstatus,
-        cart: [],
-      },
-    })),
+    saveCartToLocalStorage(user.uid, updatedCart);
+    set({ shoppingstatus: { cart: updatedCart } });
+  },
+
+  removeProduct: (id) => {
+    const user = auth.currentUser;
+    if (!user) return;
+
+    const updatedCart =
+      get().shoppingstatus.cart?.filter((item) => item.id !== id) || [];
+    saveCartToLocalStorage(user.uid, updatedCart);
+    set({ shoppingstatus: { cart: updatedCart } });
+  },
+
+  increasequantity: (id) => {
+    const user = auth.currentUser;
+    if (!user) return;
+
+    const updatedCart =
+      get().shoppingstatus.cart?.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+      ) || [];
+
+    saveCartToLocalStorage(user.uid, updatedCart);
+    set({ shoppingstatus: { cart: updatedCart } });
+  },
+
+  decreasequantity: (id) => {
+    const user = auth.currentUser;
+    if (!user) return;
+
+    const updatedCart =
+      get().shoppingstatus.cart?.map((item) =>
+        item.id === id && item.quantity > 1
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      ) || [];
+
+    saveCartToLocalStorage(user.uid, updatedCart);
+    set({ shoppingstatus: { cart: updatedCart } });
+  },
+
+  loadCartFromLocalStorage: () => {
+    const user = auth.currentUser;
+    if (!user) return;
+
+    const localCart = getCartFromLocalStorage(user.uid);
+    console.log("Loaded cart from localStorage:", localCart);
+    set({ shoppingstatus: { cart: localCart } });
+  },
 }));
 
 export default useShoppingstore;
+

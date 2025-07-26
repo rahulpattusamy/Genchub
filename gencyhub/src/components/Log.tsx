@@ -25,11 +25,13 @@ const  AuthForm =() => {
     }
   };
 
+  
+
   return (
     <div className="min-h-screen bg-gradient-to-br  flex items-center justify-center px-4">
       <div className="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-md">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
-          {mode === "login" ? "Welcome Back 👋" : "Create an Account 🚀"}
+          {mode === "login" ? "Welcome Back" : "Create an Account"}
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-5">

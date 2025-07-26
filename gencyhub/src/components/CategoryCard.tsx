@@ -10,7 +10,7 @@ const CategoryCard = () => {
   return (
     <div>
       <div className="grid grid-cols-2 pl-10 pt-5 gap-y-10 md:pl-30 lg:grid-cols-4 lg:pl-40 relative">
-        {data.map((category, index) => (
+        {data.slice(0,8).map((category, index) => (
           <div className="card2" key={index}>
             <img
               className="h-40 w-full hover:cursor-pointer rounded-xl hover:scale-110 transition-transform duration-300 relative md:h-48 md:w-full md:rounded-xl "
