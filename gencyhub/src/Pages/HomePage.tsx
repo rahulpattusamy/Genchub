@@ -1,5 +1,5 @@
 import HeroSection from "../components/HeroSection";
-import CategoryCard from "../components/CategoryCard";
+import CategoryCard from "../components/category/CategoryCard";
 import CtaSection from "../components/CtaSection";
 
 
@@ -11,6 +11,7 @@ const HomePage = () => {
         <HeroSection />
       </div>
       <div id="category">
+
         <CategoryCard />
       </div>
 

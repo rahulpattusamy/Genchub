@@ -1,6 +1,6 @@
-import CategorySelector from "../components/CategorySelector";
+import CategorySelector from "../components/category/CategorySelector";
 import SearchInput from "../components/SearchInput";
-import Category from "../components/CategoryList";
+import Category from "../components/category/CategoryList";
 import ProductCard from "../components/ProductCard";
 import { Toaster } from "react-hot-toast";
 
@@ -22,16 +22,19 @@ const ProductPage = () => {
           <Toaster
             position="top-center"
             reverseOrder={false}
-            toastOptions={{style:{
-            backgroundColor:"white",
-            color:"#1f2937",
-            fontWeight:"500",
-            padding:"1px",
-            marginTop:"4rem"
-          },iconTheme: {
-    primary: '#166534',
-    secondary:'#ffffff'
-  }}}
+            toastOptions={{
+              style: {
+                backgroundColor: "white",
+                color: "#1f2937",
+                fontWeight: "500",
+                padding: "1px",
+                marginTop: "4rem",
+              },
+              iconTheme: {
+                primary: "#166534",
+                secondary: "#ffffff",
+              },
+            }}
           />
           <ProductCard />
         </div>

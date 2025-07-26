@@ -1,5 +1,5 @@
-import useCategory from "../hooks/useCategory";
-import useProductquery from "../store/productquerystore";
+import useCategory from "../../hooks/useCategory";
+import useProductquery from "../../store/productquerystore";
 
 const CategorySelector = () => {
   const { data } = useCategory();

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import useCategory from "../hooks/useCategory";
-import useProductquery from "../store/productquerystore";
-import categoryimages from "./CategoryImage";
+import useCategory from "../../hooks/useCategory";
+import useProductquery from "../../store/productquerystore";
+import categoryimages from "../CategoryImage";
 const Category = () => {
   const { data } = useCategory();
   const setCategory = useProductquery((s) => s.setCategory);

@@ -85,9 +85,7 @@ const HeroSection = () => {
           ))}
         </div>
       </section>
-      <h2 className="text-3xl font-semibold text-center mb-12 dark:text-white">
-          Top Categories
-        </h2>
+    
     </div>
   );
 };

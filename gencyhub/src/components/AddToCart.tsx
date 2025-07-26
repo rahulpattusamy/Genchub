@@ -41,10 +41,18 @@ const AddToCart = ({ product }: Props) => {
       </button>
       <button
         onClick={() => {
+
+            if (!user) {
+            toast.error("Please login or signup", {
+              duration: 1500,
+            });
+            return;
+        }
+          
           !isProductinCart && setCart({ ...product, quantity: 1 });
           isProductinCart && navigate("/cart");
           cart && toast.success("Added to Cart");
-        }}
+         }}
         className="btn p-2 block text-xl lg:hidden ml-2"
       >
         {isProductinCart ? <BsCartCheck /> : <BsCartPlus />}

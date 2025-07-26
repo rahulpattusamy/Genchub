@@ -19,7 +19,6 @@ const NavBar = () => {
   const handleLogout = async () => {
     try {
       await logOut();
-      toast.success("Logged out successfully");
       navigate("/");
     } catch (err: any) {
       toast.error("Logout failed");
@@ -56,7 +55,7 @@ const NavBar = () => {
             className="hidden md:block text-3xl lg:cursor-pointer relative lg:text-3xl"
           >
             <LuShoppingCart />
-            <span className="hidden  w-4 h-4 ml-4    lg:text-sm bg-black lg:w-6 lg:h-6 rounded-3xl md:flex justify-center items-center text-center  -mt-9  absolute dark:bg-white dark:text-black">
+            <span className="hidden  w-4 h-4 ml-4    lg:text-sm bg-neutral-700 lg:w-6 lg:h-6 rounded-3xl md:flex justify-center items-center text-center  -mt-9  absolute dark:bg-white dark:text-black">
               <p className="text-sm">{currentUser ? cartlength : '0'}</p>
             </span>
           </button>
@@ -72,7 +71,6 @@ const NavBar = () => {
             <button
               onClick={() => {
                 navigate("/login");
-                handleLogout;
               }}
               className="hidden md:block text-3xl lg:cursor-pointer relative lg:text-3xl"
             >
