@@ -1,7 +1,7 @@
 import type { Products } from "../hooks/useProducts";
 import type { cartProduct } from "../store/ShoppingStatus";
 
-export const saveCartToLocalStorage = (uid: string, cart: cartProduct[]) => {
+export const saveCartToLocalStorage = (uid: string, cart?: cartProduct[]) => {
   localStorage.setItem(`genzhub-cart-${uid}`, JSON.stringify(cart));
 };
 
@@ -12,6 +12,11 @@ export const getCartFromLocalStorage = (uid: string): cartProduct[] => {
 
 
 
-export const saveWishlistToLocalStorage = (uid: string, wishilst:Products) => {
+export const saveWishlistToLocalStorage = (uid: string, wishilst?:Products[]) => {
   localStorage.setItem(`genzhub-wishlist-${uid}`, JSON.stringify(wishilst));
+};
+
+export const getWishlistFromLocalStorage = (uid: string): Products[] => {
+  const data = localStorage.getItem(`genzhub-wishlist-${uid}`);
+  return data ? JSON.parse(data) : [];
 };

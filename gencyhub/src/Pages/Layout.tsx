@@ -7,14 +7,19 @@ import { useEffect } from "react";
 import auth from "../config/firebase-config";
 import useShoppingstore from "../store/ShoppingStatus";
 
-
 const Layout = () => {
-   const loadCartFromLocalStorage = useShoppingstore((state) => state.loadCartFromLocalStorage);
+  const loadCartFromLocalStorage = useShoppingstore(
+    (state) => state.loadCartFromLocalStorage
+  );
+  const loadWishlistFromLocalStorage = useShoppingstore(
+    (s) => s.loadWishlistFromLocalStorage
+  );
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        loadCartFromLocalStorage(); // ✅ Load cart only for logged-in user
+        loadCartFromLocalStorage();
+        loadWishlistFromLocalStorage();
       }
     });
 
@@ -22,16 +27,15 @@ const Layout = () => {
   }, []);
   return (
     <>
-    
       <NavBar />
       <Outlet />
       <div className="mt-5">
         <Footer />
       </div>
-     
-    <div className="block  pb-16 md:hidden">
-       <NavBar2/>
-    </div>
+
+      <div className="block  pb-16 md:hidden">
+        <NavBar2 />
+      </div>
     </>
   );
 };

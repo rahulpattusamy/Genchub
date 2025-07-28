@@ -28,11 +28,11 @@ const AddToCart = ({ product }: Props) => {
 
             return; 
           }
-          !isProductinCart && setCart({ ...product, quantity: 1 });
+        
+          setCart({ ...product, quantity: 1 });
           !isProductinCart &&
             toast.success("Added to Cart", { duration: 1300 });
           isProductinCart && navigate("/cart");
-          isProductinCart && logOut()
         }}
         className="btn hidden text-sm  lg:flex ml-2"
       >

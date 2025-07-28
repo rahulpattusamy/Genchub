@@ -4,6 +4,8 @@ import auth from "../config/firebase-config";
 import {
   saveCartToLocalStorage,
   getCartFromLocalStorage,
+  saveWishlistToLocalStorage,
+  getWishlistFromLocalStorage,
 } from "../utils/localstorage";
 
 export interface cartProduct extends Products {
@@ -24,61 +26,87 @@ interface ShoppingStore {
   increasequantity: (id: number) => void;
   decreasequantity: (id: number) => void;
   loadCartFromLocalStorage: () => void;
+  loadWishlistFromLocalStorage: () => void;
 }
 
 const useShoppingstore = create<ShoppingStore>((set, get) => ({
   shoppingstatus: {
     cart: [],
+    wishlist: [],
   },
 
   setCart: (product) => {
     const user = auth.currentUser;
     if (!user) return;
 
-    const currentCart = get().shoppingstatus.cart || [];
-    const exists = currentCart.find((item) => item.id === product.id);
+    const cart = get().shoppingstatus.cart || [];
+    const exists = cart.find((item) => item.id === product.id);
 
     const updatedCart = exists
-      ? currentCart.map((item) =>
+      ? cart.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         )
-      : [...currentCart, { ...product, quantity: 1 }];
+      : [...cart, { ...product, quantity: 1 }];
 
     saveCartToLocalStorage(user.uid, updatedCart);
-    set({ shoppingstatus: { cart: updatedCart } });
+    set({
+      shoppingstatus: {
+        ...get().shoppingstatus,
+        cart: updatedCart,
+      },
+    });
   },
 
   setWishlist: (product) => {
-    const wishilst = set((state) => ({
+    const user = auth.currentUser;
+    if (!user) return;
+
+    const currentWishlist = get().shoppingstatus.wishlist || [];
+    const exists = currentWishlist.find((item) => item.id === product.id);
+    if (exists) return; 
+
+    const updatedWishlist = [...currentWishlist, product];
+    saveWishlistToLocalStorage(user.uid, updatedWishlist);
+    set({
       shoppingstatus: {
-        ...state.shoppingstatus,
-        wishlist: [...(state.shoppingstatus.wishlist || []), product],
+        ...get().shoppingstatus,
+        wishlist: updatedWishlist,
       },
-    }));
+    });
   },
+
   removeProduct: (id) => {
     const user = auth.currentUser;
     if (!user) return;
 
     const updatedCart =
       get().shoppingstatus.cart?.filter((item) => item.id !== id) || [];
+
     saveCartToLocalStorage(user.uid, updatedCart);
-    set({ shoppingstatus: { cart: updatedCart } });
+    set({
+      shoppingstatus: {
+        ...get().shoppingstatus,
+        cart: updatedCart,
+      },
+    });
   },
 
   removeFromWishlist: (id) => {
     const user = auth.currentUser;
     if (!user) return;
-    set((state) => ({
+
+    const updatedWishlist =
+      get().shoppingstatus.wishlist?.filter((item) => item.id !== id) || [];
+
+    saveWishlistToLocalStorage(user.uid, updatedWishlist);
+    set({
       shoppingstatus: {
-        ...state.shoppingstatus,
-        wishlist: [
-          ...(state.shoppingstatus.wishlist || []).filter((f) => f.id !== id),
-        ],
+        ...get().shoppingstatus,
+        wishlist: updatedWishlist,
       },
-    }));
+    });
   },
 
   increasequantity: (id) => {
@@ -91,7 +119,12 @@ const useShoppingstore = create<ShoppingStore>((set, get) => ({
       ) || [];
 
     saveCartToLocalStorage(user.uid, updatedCart);
-    set({ shoppingstatus: { cart: updatedCart } });
+    set({
+      shoppingstatus: {
+        ...get().shoppingstatus,
+        cart: updatedCart,
+      },
+    });
   },
 
   decreasequantity: (id) => {
@@ -106,16 +139,40 @@ const useShoppingstore = create<ShoppingStore>((set, get) => ({
       ) || [];
 
     saveCartToLocalStorage(user.uid, updatedCart);
-    set({ shoppingstatus: { cart: updatedCart } });
+    set({
+      shoppingstatus: {
+        ...get().shoppingstatus,
+        cart: updatedCart,
+      },
+    });
   },
 
   loadCartFromLocalStorage: () => {
     const user = auth.currentUser;
     if (!user) return;
 
-    const localCart = getCartFromLocalStorage(user.uid);
-    set({ shoppingstatus: { cart: localCart } });
+    const localCart = getCartFromLocalStorage(user.uid) || [];
+    set({
+      shoppingstatus: {
+        ...get().shoppingstatus,
+        cart: localCart,
+      },
+    });
+  },
+
+  loadWishlistFromLocalStorage: () => {
+    const user = auth.currentUser;
+    if (!user) return;
+
+    const localWishlist = getWishlistFromLocalStorage(user.uid) || [];
+    set({
+      shoppingstatus: {
+        ...get().shoppingstatus,
+        wishlist: localWishlist,
+      },
+    });
   },
 }));
+
 
 export default useShoppingstore;

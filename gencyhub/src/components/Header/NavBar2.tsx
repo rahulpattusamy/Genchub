@@ -7,10 +7,12 @@ import auth from "../../config/firebase-config";
 import toast from "react-hot-toast";
 import { logOut } from "../../Service/auth-service";
 import useAuthStore from "../../store/authstore";
+import useShoppingstore from "../../store/ShoppingStatus";
 
 const NavBar2 = () => {
   const navigate = useNavigate();
   const cartlength = useCarlength();
+  const wishlist = useShoppingstore(s=>s.shoppingstatus.wishlist)
   const currentUser = auth.currentUser;
   const user = useAuthStore((s) => s.user);
   const handleLogout = async () => {
@@ -26,8 +28,11 @@ const NavBar2 = () => {
     <div>
       <header className="w-full  fixed bottom-0 left-0 z-50 flex justify-center items-center px-4 py-4 bg-red-400 p-5 text-white dark:bg-neutral-900 ">
         <div className="flex justify-around w-50 gap-13">
-          <button className="text-3xl lg:cursor-pointer relative lg:text-4xl">
+          <button onClick={()=>navigate('/wishlist')} className="text-3xl lg:cursor-pointer relative lg:text-4xl">
             <MdFavoriteBorder />
+            <span className=" w-6 h-6 ml-4    lg:text-sm bg-neutral-700  rounded-3xl flex justify-center items-center text-center  -mt-9  absolute dark:bg-white dark:text-black">
+              <p className="text-sm">{currentUser ? wishlist?.length : "0"}</p>
+            </span>
           </button>
 
           <button
@@ -35,16 +40,19 @@ const NavBar2 = () => {
             className="text-3xl lg:cursor-pointer relative lg:text-4xl"
           >
             <LuShoppingCart />
+
+            <span className=" w-6 h-6 ml-4    lg:text-sm bg-neutral-700  rounded-3xl flex justify-center items-center text-center  -mt-9  absolute dark:bg-white dark:text-black">
+              <p className="text-sm">{currentUser ? cartlength : "0"}</p>
+            </span>
           </button>
-          <span className="w-6 h-6 ml-5  md:ml-20 lg:text-sm bg-gray-700 lg:w-8 lg:h-8 rounded-3xl flex justify-center items-center text-center lg:ml-22 -mt-2  absolute dark:bg-white dark:text-black">
-            <p className="text-sm">{currentUser ? cartlength : "0"}</p>
-          </span>
 
           {user ? (
             <button
               onClick={handleLogout}
               className="  text-lg lg:cursor-pointer relative lg:text-3xl"
-            > Logout
+            >
+              {" "}
+              Logout
             </button>
           ) : (
             <button

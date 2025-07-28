@@ -58,14 +58,11 @@ const CartCard = () => {
                 <div className=" button flex justify-between mt-5 w-55">
                   <button
                     onClick={() => removefromcart(item.id)}
-                    className="btn3 bg-red-400"
+                    className="btn3 p-2 bg-red-400"
                   >
                     <div className="text-lg">
                       <MdOutlineDelete />
                     </div>
-                  </button>
-                  <button className="btn mr-5 md:text-lg md:mr-0 dark:bg-red-400">
-                    Move to wishlist
                   </button>
                 </div>
               </div>
