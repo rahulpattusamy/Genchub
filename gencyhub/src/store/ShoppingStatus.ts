@@ -20,6 +20,7 @@ interface ShoppingStore {
   setCart: (product: cartProduct) => void;
   setWishlist: (product: Products) => void;
   removeProduct: (id: number) => void;
+  removeFromWishlist: (id: number) => void;
   increasequantity: (id: number) => void;
   decreasequantity: (id: number) => void;
   loadCartFromLocalStorage: () => void;
@@ -49,13 +50,14 @@ const useShoppingstore = create<ShoppingStore>((set, get) => ({
     set({ shoppingstatus: { cart: updatedCart } });
   },
 
-  setWishlist: (product) =>
-    set((state) => ({
+  setWishlist: (product) => {
+    const wishilst = set((state) => ({
       shoppingstatus: {
         ...state.shoppingstatus,
         wishlist: [...(state.shoppingstatus.wishlist || []), product],
       },
-    })),
+    }));
+  },
   removeProduct: (id) => {
     const user = auth.currentUser;
     if (!user) return;
@@ -64,6 +66,19 @@ const useShoppingstore = create<ShoppingStore>((set, get) => ({
       get().shoppingstatus.cart?.filter((item) => item.id !== id) || [];
     saveCartToLocalStorage(user.uid, updatedCart);
     set({ shoppingstatus: { cart: updatedCart } });
+  },
+
+  removeFromWishlist: (id) => {
+    const user = auth.currentUser;
+    if (!user) return;
+    set((state) => ({
+      shoppingstatus: {
+        ...state.shoppingstatus,
+        wishlist: [
+          ...(state.shoppingstatus.wishlist || []).filter((f) => f.id !== id),
+        ],
+      },
+    }));
   },
 
   increasequantity: (id) => {

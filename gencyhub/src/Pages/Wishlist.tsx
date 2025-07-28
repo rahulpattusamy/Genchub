@@ -2,13 +2,31 @@ import { Link } from "react-router-dom";
 import useShoppingstore from "../store/ShoppingStatus";
 import { MdDelete } from "react-icons/md";
 import AddToCart from "../components/AddToCart";
+import { Toaster } from "react-hot-toast";
 
 const Wishlist = () => {
   const data = useShoppingstore((s) => s.shoppingstatus.wishlist);
-  const removeitem = useShoppingstore((s) => s.removeProduct);
+  const removeitem = useShoppingstore((s) => s.removeFromWishlist);
 
   return (
     <div className="grid grid-cols-2 items-center p-10 gap-3  md:grid-cols-2 lg:grid-cols-4 lg:gap-5 relative overflow-hidden h-full">
+        <Toaster
+        position="top-center"
+        reverseOrder={false}
+        toastOptions={{
+          style: {
+            backgroundColor: "white",
+            color: "#1f2937",
+            fontWeight: "500",
+            padding: "1px",
+            marginTop: "4rem",
+          },
+          iconTheme: {
+            primary: "#166534",
+            secondary: "#ffffff",
+          },
+        }}
+      />
       {data?.map((item) => {
         const ratingbg = item.rating >= 4 ? "text-lime-700" : "text-orange-300";
         return (

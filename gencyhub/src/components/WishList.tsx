@@ -2,6 +2,7 @@ import { MdFavoriteBorder } from "react-icons/md";
 import type { Products } from "../hooks/useProducts";
 import useShoppingstore from "../store/ShoppingStatus";
 import { findWishlist } from "../utils/FindProduct";
+import toast from "react-hot-toast";
 
 interface Props {
   products: Products;
@@ -15,8 +16,9 @@ const WishList = ({ products }: Props) => {
     <div>
       <button
         onClick={() => {
-      const w =   !isWishList && setWishlist(products);
-         console.log(w)
+         !isWishList && setWishlist(products);
+          !isWishList &&
+            toast.success("Added to Wishlist", { duration: 1400 })
         }}
         className="btn2 mr-2"
       >
