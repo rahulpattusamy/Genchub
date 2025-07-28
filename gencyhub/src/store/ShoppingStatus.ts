@@ -4,7 +4,7 @@ import auth from "../config/firebase-config";
 import {
   saveCartToLocalStorage,
   getCartFromLocalStorage,
-} from "../utils/localStorage";
+} from "../utils/localstorage";
 
 export interface cartProduct extends Products {
   quantity: number;
@@ -12,11 +12,13 @@ export interface cartProduct extends Products {
 
 interface ShoppingStatus {
   cart?: cartProduct[];
+  wishlist?: Products[];
 }
 
 interface ShoppingStore {
   shoppingstatus: ShoppingStatus;
   setCart: (product: cartProduct) => void;
+  setWishlist: (product: Products) => void;
   removeProduct: (id: number) => void;
   increasequantity: (id: number) => void;
   decreasequantity: (id: number) => void;
@@ -47,6 +49,13 @@ const useShoppingstore = create<ShoppingStore>((set, get) => ({
     set({ shoppingstatus: { cart: updatedCart } });
   },
 
+  setWishlist: (product) =>
+    set((state) => ({
+      shoppingstatus: {
+        ...state.shoppingstatus,
+        wishlist: [...(state.shoppingstatus.wishlist || []), product],
+      },
+    })),
   removeProduct: (id) => {
     const user = auth.currentUser;
     if (!user) return;
@@ -90,10 +99,8 @@ const useShoppingstore = create<ShoppingStore>((set, get) => ({
     if (!user) return;
 
     const localCart = getCartFromLocalStorage(user.uid);
-    console.log("Loaded cart from localStorage:", localCart);
     set({ shoppingstatus: { cart: localCart } });
   },
 }));
 
 export default useShoppingstore;
-

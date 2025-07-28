@@ -1,10 +1,10 @@
-import { MdFavoriteBorder } from "react-icons/md";
 import useProducts from "../hooks/useProducts";
 import AddToCart from "./AddToCart";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import useProductquery from "../store/productquerystore";
 import { Link } from "react-router-dom";
+import WishList from "./WishList";
 
 const ProductCard = () => {
   const { data, error, fetchNextPage, hasNextPage } = useProducts();
@@ -52,9 +52,7 @@ const ProductCard = () => {
                       </Link>
                       <p className=" text sm:text-lg font-bold flex justify-between items-center">
                         ${product.price.toFixed()}{" "}
-                        <button onClick={() => {}} className="btn2 mr-2">
-                          <MdFavoriteBorder size={20} />
-                        </button>
+                      <WishList products={product}/>
                       </p>
                       <p className="border-b border-gray-600"></p>
                     </div>

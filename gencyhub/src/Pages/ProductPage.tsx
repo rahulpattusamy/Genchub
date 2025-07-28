@@ -1,6 +1,6 @@
-import CategorySelector from "../components/category/CategorySelector";
+import CategorySelector from "../components/CategorySelector";
 import SearchInput from "../components/SearchInput";
-import Category from "../components/category/CategoryList";
+import Category from "../components/CategoryList";
 import ProductCard from "../components/ProductCard";
 import { Toaster } from "react-hot-toast";
 
@@ -33,6 +33,12 @@ const ProductPage = () => {
               iconTheme: {
                 primary: "#166534",
                 secondary: "#ffffff",
+              },
+              error: {
+                iconTheme: {
+                  primary: "#b91c1c",
+                  secondary: "#ffffff",
+                },
               },
             }}
           />

@@ -47,7 +47,7 @@ const NavBar = () => {
           >
             <FaShoppingBag />
           </button>
-          <button className=" hidden md:block text-3xl lg:cursor-pointer relative lg:text-3xl">
+          <button onClick={()=>navigate('/wishlist')} className=" hidden md:block text-3xl lg:cursor-pointer relative lg:text-3xl">
             <MdFavoriteBorder />
           </button>
           <button

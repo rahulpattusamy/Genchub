@@ -8,3 +8,6 @@ export const getCartFromLocalStorage = (uid: string): cartProduct[] => {
   const data = localStorage.getItem(`genczhub-cart-${uid}`);
   return data ? JSON.parse(data) : [];
 };
+
+
+

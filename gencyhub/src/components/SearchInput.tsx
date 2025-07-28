@@ -33,7 +33,7 @@ const SearchInput = () => {
       className=""
     >
       <div className=" relative ">
-        <div className="ml-1 pt-1 text-2xl  text-black  absolute sm:pt-2 sm:ml-2 sm:text-2xl">
+        <div className="ml-2 pt-2.5 text-xl  text-black  absolute sm:pt-2 sm:ml-2 sm:text-2xl">
           <CiSearch />
         </div>
 

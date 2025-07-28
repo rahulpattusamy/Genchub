@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { signIn,signUp  } from "../Service/auth-service";
+import { signIn,signInWithGoogle,signUp  } from "../Service/auth-service";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
@@ -11,6 +11,7 @@ const  AuthForm =() => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     try {
       if (mode === "login") {
         await signIn(email, password);
@@ -25,6 +26,15 @@ const  AuthForm =() => {
     }
   };
 
+  const handleGoogleLogin = async () => {
+  try {
+    await signInWithGoogle();
+    toast.success("Signed in with Google!");
+    navigate("/");
+  } catch (error) {
+    toast.error("Google Sign-In failed");
+  }
+};
   
 
   return (
@@ -64,7 +74,7 @@ const  AuthForm =() => {
 
     {/* Continue with Google Button */}
     <div className="mt-6">
-      <button
+      <button onClick={()=>handleGoogleLogin}
         type="button"
         className="w-full flex items-center justify-center gap-3 cursor-pointer px-4 py-2 border border-gray-300 rounded-xl hover:bg-gray-100 transition duration-300"
       >
