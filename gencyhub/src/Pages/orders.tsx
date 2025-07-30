@@ -18,7 +18,7 @@ const Orders = () => {
       <h1 className="text-2xl font-bold mb-6">Your Orders</h1>
 
       {orders.length === 0 ? (
-        <p>No orders found.</p>
+        <p className="dark:text-white">No orders found.</p>
       ) : (
         <div className="space-y-8">
           {orders.map((order, index) => (
