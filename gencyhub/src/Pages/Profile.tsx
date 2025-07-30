@@ -28,7 +28,7 @@ const Profile = () => {
         <button className="btn text-lg" onClick={handleLogout}>
           SIGN OUT
         </button>
-        <p onClick={()=>navigate('/orders') } className="font-light hover:border-dashed cursor-pointer dark:text-white">Check Your Orders</p>
+        <p onClick={()=>navigate('/orders') } className="font-light hover:underline cursor-pointer dark:text-white">Check Your Orders</p>
       </div>
 
     </div>

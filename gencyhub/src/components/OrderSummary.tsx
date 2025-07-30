@@ -34,9 +34,8 @@ const OrderSummary = () => {
         toast.success("Payment successful!", { duration: 1500 });
         console.log("Payment ID:", response.razorpay_payment_id);
         saveOrderToLocal(user?.uid, cart, finalprice);
-
-        clearcart();
         navigate("/product");
+        clearcart();
         rzp.close();
       },
       prefill: {
