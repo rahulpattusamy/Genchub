@@ -10,6 +10,7 @@ import useAuthStore from "../../store/authstore";
 import auth from "../../config/firebase-config";
 import useShoppingstore from "../../store/ShoppingStatus";
 import useCarlength from "../../utils/cartLength";
+import { useLocation } from "react-router-dom";
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -17,8 +18,8 @@ const NavBar = () => {
   const wishlist = useShoppingstore((s) => s.shoppingstatus.wishlist);
   const user = useAuthStore((s) => s.user);
   const currentUser = auth.currentUser;
-
-
+  const location = useLocation();
+  const isProductPage = location.pathname === "/product";
 
   return (
     <header className="w-full top-0 z-50 sticky left-0 right-0 justify-between px-5 py-6  p-5 text-white  bg-rose-400  shadow-lg dark:bg-neutral-800 ">
@@ -32,7 +33,7 @@ const NavBar = () => {
           </h1>
         </div>
         <div className="hidden md:block">
-          <SearchInput />
+         {isProductPage && <SearchInput />}
         </div>
 
         <div className="flex gap-4 items-center  lg:flex shrink-0 md:gap-4 lg:gap-8">
@@ -64,7 +65,8 @@ const NavBar = () => {
           </button>
 
           {user ? (
-            <button onClick={()=>  user && navigate('/profile')}
+            <button
+              onClick={() => user && navigate("/profile")}
               className="hidden  text-3xl cursor-pointer relative lg:text-4xl md:flex flex-col items-center justify-center"
             >
               {" "}
@@ -78,7 +80,9 @@ const NavBar = () => {
               className="hidden md:block text-3xl lg:cursor-pointer relative lg:text-3xl"
             >
               <FaRegUserCircle />
-               <span className="text-sm font-normal absolute -ml-9  w-18">SIGN IN</span> 
+              <span className="text-sm font-normal absolute -ml-9  w-18">
+                SIGN IN
+              </span>
             </button>
           )}
           <DarkModeSwitch />

@@ -14,7 +14,7 @@ const Wishlist = () => {
   if (!user) {
     return <EmptyWishlist />;
   }
-  if (data?.length === 0) <EmptyWishlist />;
+  if (data?.length === 0) return <EmptyWishlist />;
   if (user)
     return (
       <div className="grid grid-cols-2 items-center p-10 gap-3  md:grid-cols-2 lg:grid-cols-4 lg:gap-5 relative overflow-hidden h-full">

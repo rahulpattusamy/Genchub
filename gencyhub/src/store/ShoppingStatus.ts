@@ -27,6 +27,7 @@ interface ShoppingStore {
   decreasequantity: (id: number) => void;
   loadCartFromLocalStorage: () => void;
   loadWishlistFromLocalStorage: () => void;
+  clearCart: () => void;
 }
 
 const useShoppingstore = create<ShoppingStore>((set, get) => ({
@@ -65,7 +66,7 @@ const useShoppingstore = create<ShoppingStore>((set, get) => ({
 
     const currentWishlist = get().shoppingstatus.wishlist || [];
     const exists = currentWishlist.find((item) => item.id === product.id);
-    if (exists) return; 
+    if (exists) return;
 
     const updatedWishlist = [...currentWishlist, product];
     saveWishlistToLocalStorage(user.uid, updatedWishlist);
@@ -172,7 +173,9 @@ const useShoppingstore = create<ShoppingStore>((set, get) => ({
       },
     });
   },
-}));
 
+  clearCart: () =>
+    set((state) => ({ shoppingstatus: { ...state.shoppingstatus, cart: [] } })),
+}));
 
 export default useShoppingstore;

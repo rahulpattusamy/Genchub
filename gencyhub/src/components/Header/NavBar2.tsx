@@ -1,7 +1,7 @@
 import { FaRegUserCircle } from "react-icons/fa";
 import { LuShoppingCart } from "react-icons/lu";
 import { MdFavoriteBorder } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useCarlength from "../../utils/cartLength";
 import auth from "../../config/firebase-config";
 import useAuthStore from "../../store/authstore";
@@ -44,12 +44,13 @@ const NavBar2 = () => {
           </button>
 
           {user ? (
+            <Link to="/profile">
             <button
-              onClick={()=>  user && navigate('/profile')}
               className="  text-4xl lg:cursor-pointer relative lg:text-3xl"
             >
               <PiUserCircleCheck />
             </button>
+            </Link>
           ) : (
             <button
               onClick={() => {

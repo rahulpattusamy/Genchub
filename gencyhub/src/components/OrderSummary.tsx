@@ -4,6 +4,8 @@ import useShoppingstore from "../store/ShoppingStatus";
 import useCarlength from "../utils/cartLength";
 import useCartPrice from "../utils/cartPrice";
 import { loadRazorpayScript } from "../utils/loadRazor";
+import { saveOrderToLocal } from "../utils/localorder";
+import { useNavigate } from "react-router-dom";
 
 const OrderSummary = () => {
   const cart = useShoppingstore((s) => s.shoppingstatus.cart);
@@ -12,6 +14,8 @@ const OrderSummary = () => {
   const fixedprice = price.toFixed();
   const finalprice = parseInt(fixedprice);
   const user = useAuthStore((s) => s.user);
+  const clearcart = useShoppingstore((s) => s.clearCart);
+  const navigate = useNavigate();
   const handleCheckout = async () => {
     const isLoaded = await loadRazorpayScript();
 
@@ -29,6 +33,11 @@ const OrderSummary = () => {
       handler: function (response: any) {
         toast.success("Payment successful!", { duration: 1500 });
         console.log("Payment ID:", response.razorpay_payment_id);
+        saveOrderToLocal(user?.uid, cart, finalprice);
+
+        clearcart();
+        navigate("/product");
+        rzp.close();
       },
       prefill: {
         name: user?.displayName,

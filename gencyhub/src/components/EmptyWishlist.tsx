@@ -1,24 +1,29 @@
-import { Link } from "react-router-dom"
-
-
+import { Link } from "react-router-dom";
+import wishlist from "../assets/wish-list.png"
 const EmptyWishlist = () => {
   return (
     <div>
-      <div className=" flex flex-col items-center">
-      <div className="text-center mt-3">
-        <h1 className="text-black text-3xl dark:text-white">Hey, it feels so light!</h1>
-        <p className="text-gray-400 text-lg font-sans mt-1 dark:text-white">
-          "Your wishlist is waiting. Add products you’d like to keep an eye on!"
-        </p> 
-        <Link to="/">
-        <button className="bg-gray-700 p-2 rounded-sm text-white text-sm mt-3 hover:bg-gray-800 transition transform active:scale-110 cursor-pointer">
-          Shop now
-        </button>
-        </Link>
+      <div className=" flex flex-col items-center mt-10">
+        <div>
+          <img className="h-60" src={wishlist} alt="" />
+        </div>
+        <div className="text-center mt-3">
+          <h1 className="text-black text-3xl dark:text-white">
+            Hey, it feels so light!
+          </h1>
+          <p className="text-gray-400 text-lg font-sans mt-1 dark:text-white">
+            "Your wishlist is waiting. Add products you’d like to keep an eye
+            on!"
+          </p>
+          <Link to="/">
+            <button className="bg-gray-700 p-2 rounded-sm text-white text-sm mt-3 hover:bg-gray-800 transition transform active:scale-110 cursor-pointer">
+              Shop now
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
-    </div>
-  )
-}
+  );
+};
 
-export default EmptyWishlist
+export default EmptyWishlist;
