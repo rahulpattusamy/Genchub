@@ -1,4 +1,4 @@
-import { MdFavoriteBorder } from "react-icons/md";
+import { MdCheck, MdFavoriteBorder } from "react-icons/md";
 import type { Products } from "../hooks/useProducts";
 import useShoppingstore from "../store/ShoppingStatus";
 import { findWishlist } from "../utils/FindProduct";
@@ -31,7 +31,7 @@ const WishList = ({ products }: Props) => {
         }}
         className="btn2 mr-2"
       >
-        <MdFavoriteBorder size={20} />
+       { isWishList ? <MdCheck/>:<MdFavoriteBorder size={20} />}
       </button>
     </div>
   );
