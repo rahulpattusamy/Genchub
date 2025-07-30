@@ -6,8 +6,10 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 import auth from "../config/firebase-config";
 import useShoppingstore from "../store/ShoppingStatus";
+import useAuthStore from "../store/authstore";
 
 const Layout = () => {
+  const setUser = useAuthStore((s) => s.setUser);
   const loadCartFromLocalStorage = useShoppingstore(
     (state) => state.loadCartFromLocalStorage
   );
@@ -17,6 +19,7 @@ const Layout = () => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
       if (user) {
         loadCartFromLocalStorage();
         loadWishlistFromLocalStorage();
@@ -24,7 +27,7 @@ const Layout = () => {
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [setUser, loadCartFromLocalStorage, loadWishlistFromLocalStorage]);
   return (
     <>
       <NavBar />

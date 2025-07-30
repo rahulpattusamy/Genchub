@@ -5,7 +5,6 @@ import { BsCartCheck, BsCartPlus } from "react-icons/bs";
 import { toast } from "react-hot-toast";
 import type { Products } from "../hooks/useProducts";
 import useAuthStore from "../store/authstore";
-import { logOut } from "../Service/auth-service";
 
 interface Props {
   product: Products;

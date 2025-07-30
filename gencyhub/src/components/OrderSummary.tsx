@@ -1,11 +1,57 @@
+import toast from "react-hot-toast";
+import useAuthStore from "../store/authstore";
 import useShoppingstore from "../store/ShoppingStatus";
 import useCarlength from "../utils/cartLength";
 import useCartPrice from "../utils/cartPrice";
+import { loadRazorpayScript } from "../utils/loadRazor";
 
 const OrderSummary = () => {
   const cart = useShoppingstore((s) => s.shoppingstatus.cart);
   const price = useCartPrice();
   const cartlength = useCarlength();
+  const fixedprice = price.toFixed();
+  const finalprice = parseInt(fixedprice);
+  const user = useAuthStore((s) => s.user);
+  const handleCheckout = async () => {
+    const isLoaded = await loadRazorpayScript();
+
+    if (!isLoaded) {
+      toast.error("Failed to load Razorpay SDK. Please try again later.");
+      return;
+    }
+
+    const options = {
+      key: "rzp_test_1x2aZUhMp99CXe",
+      amount: finalprice * 100,
+      currency: "USD",
+      name: "Genzhub",
+      description: `Purchase of ${cartlength} items`,
+      handler: function (response: any) {
+        toast.success("Payment successful!", { duration: 1500 });
+        console.log("Payment ID:", response.razorpay_payment_id);
+      },
+      prefill: {
+        name: user?.displayName,
+        email: user?.email,
+      },
+      theme: {
+        color: "#3399cc",
+      },
+      method: {
+        upi: true,
+        card: true,
+        netbanking: true,
+        wallet: true,
+        emi: true,
+      },
+      modal: {
+        payment_methods: ["upi"],
+      },
+    };
+
+    const rzp = new (window as any).Razorpay(options);
+    rzp.open();
+  };
 
   if (cart)
     return (
@@ -25,7 +71,10 @@ const OrderSummary = () => {
           Total Amount:<span>${price.toFixed()}</span>
         </p>
 
-        <button className="px-32 text-sm md:ml-5  lg:px-21 rounded-sm cursor-pointer py-2 bg-gray-800 text-white">
+        <button
+          onClick={handleCheckout}
+          className="px-32 text-sm md:ml-5  lg:px-21 rounded-sm cursor-pointer py-2 bg-gray-800 text-white"
+        >
           Checkout
         </button>
       </div>

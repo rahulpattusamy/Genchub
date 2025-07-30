@@ -6,6 +6,7 @@ import ProductPage from "./Pages/ProductPage";
 import ProductDetail from "./Pages/ProductDetail";
 import Auth from "./Pages/Auth";
 import Wishlist from "./Pages/Wishlist";
+import Profile from "./Pages/Profile";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
       { path: "/products/:id", element: <ProductDetail /> },
       { path: "/wishlist", element: <Wishlist /> },
       { path: "/login", element: <Auth /> },
+      {path:'/profile', element:<Profile/>}
     ],
   },
 ]);

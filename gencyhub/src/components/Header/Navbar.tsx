@@ -1,34 +1,27 @@
 import { MdFavoriteBorder } from "react-icons/md";
 import { LuShoppingCart } from "react-icons/lu";
 import { FaRegUserCircle, FaShoppingBag } from "react-icons/fa";
+import { PiUserCircleCheck } from "react-icons/pi";
+
 import SearchInput from "../SearchInput";
 import { useNavigate } from "react-router-dom";
 import DarkModeSwitch from "../DarkModeSwitch";
 import useAuthStore from "../../store/authstore";
-import toast from "react-hot-toast";
-import { logOut } from "../../Service/auth-service";
 import auth from "../../config/firebase-config";
 import useShoppingstore from "../../store/ShoppingStatus";
 import useCarlength from "../../utils/cartLength";
 
 const NavBar = () => {
   const navigate = useNavigate();
-  const cartlength = useCarlength()
-  const wishlist = useShoppingstore(s=>s.shoppingstatus.wishlist)
+  const cartlength = useCarlength();
+  const wishlist = useShoppingstore((s) => s.shoppingstatus.wishlist);
   const user = useAuthStore((s) => s.user);
   const currentUser = auth.currentUser;
 
-  const handleLogout = async () => {
-    try {
-      await logOut();
-      navigate("/");
-    } catch (err: any) {
-      toast.error("Logout failed");
-    }
-  };
+
 
   return (
-    <header className="w-full top-0 z-50 sticky left-0 right-0 justify-between px-4 py-4  p-5 text-white  bg-rose-400  shadow-lg dark:bg-neutral-800 ">
+    <header className="w-full top-0 z-50 sticky left-0 right-0 justify-between px-5 py-6  p-5 text-white  bg-rose-400  shadow-lg dark:bg-neutral-800 ">
       <div className="max-w-full mx-auto items-center flex justify-between">
         <div>
           <h1
@@ -49,10 +42,15 @@ const NavBar = () => {
           >
             <FaShoppingBag />
           </button>
-          <button onClick={()=>navigate('/wishlist')} className=" hidden md:block text-3xl lg:cursor-pointer relative lg:text-3xl">
+          <button
+            onClick={() => navigate("/wishlist")}
+            className=" hidden md:block text-3xl lg:cursor-pointer relative lg:text-3xl"
+          >
             <MdFavoriteBorder />
-              <span className="hidden  w-4 h-4 ml-4    lg:text-sm bg-neutral-700 lg:w-6 lg:h-6 rounded-3xl md:flex justify-center items-center text-center  -mt-9  absolute dark:bg-white dark:text-black">
-              <p className="text-sm">{currentUser ? wishlist?.length || '0' : '0'}</p>
+            <span className="hidden  w-4 h-4 ml-4    lg:text-sm bg-neutral-700 lg:w-6 lg:h-6 rounded-3xl md:flex justify-center items-center text-center  -mt-9  absolute dark:bg-white dark:text-black">
+              <p className="text-sm">
+                {currentUser ? wishlist?.length || "0" : "0"}
+              </p>
             </span>
           </button>
           <button
@@ -61,16 +59,16 @@ const NavBar = () => {
           >
             <LuShoppingCart />
             <span className="hidden  w-4 h-4 ml-4    lg:text-sm bg-neutral-700 lg:w-6 lg:h-6 rounded-3xl md:flex justify-center items-center text-center  -mt-9  absolute dark:bg-white dark:text-black">
-              <p className="text-sm">{currentUser ? cartlength : '0'}</p>
+              <p className="text-sm">{currentUser ? cartlength : "0"}</p>
             </span>
           </button>
 
           {user ? (
-            <button
-              onClick={handleLogout}
-              className="hidden md:block text-3xl lg:cursor-pointer relative lg:text-3xl"
+            <button onClick={()=>  user && navigate('/profile')}
+              className="hidden  text-3xl cursor-pointer relative lg:text-4xl md:flex flex-col items-center justify-center"
             >
-              Logout
+              {" "}
+              <PiUserCircleCheck />
             </button>
           ) : (
             <button
@@ -80,6 +78,7 @@ const NavBar = () => {
               className="hidden md:block text-3xl lg:cursor-pointer relative lg:text-3xl"
             >
               <FaRegUserCircle />
+               <span className="text-sm font-normal absolute -ml-9  w-18">SIGN IN</span> 
             </button>
           )}
           <DarkModeSwitch />

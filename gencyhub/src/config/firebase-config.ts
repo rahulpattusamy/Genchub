@@ -1,7 +1,9 @@
-
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import {getFirestore} from "firebase/firestore"
+import {
+  getAuth,
+  setPersistence,
+  browserLocalPersistence,
+} from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
@@ -11,13 +13,12 @@ const firebaseConfig = {
   storageBucket: "genzhub-cb2ce.firebasestorage.app",
   messagingSenderId: "160200876370",
   appId: "1:160200876370:web:f108fb49ce435c1e6f1a8b",
-  measurementId: "G-JVQJHJTTQY"
+  measurementId: "G-JVQJHJTTQY",
 };
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-export const db = getFirestore(app)
 export const googleProvider = new GoogleAuthProvider();
 
+setPersistence(auth, browserLocalPersistence).catch((e) => console.error(e));
 
-
-export default auth
+export default auth;
