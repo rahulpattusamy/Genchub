@@ -31,7 +31,7 @@ const WishList = ({ products }: Props) => {
         }}
         className="btn2 mr-2"
       >
-       { isWishList ? <MdCheck/>:<MdFavoriteBorder size={20} />}
+       { isWishList ? <MdCheck size={20}/>:<MdFavoriteBorder size={20} />}
       </button>
     </div>
   );
