@@ -3,7 +3,7 @@ import cartimg from "../assets/shopping.png"
 
 const EmptycartMessage = () => {
   return (
-    <div className=" flex flex-col items-center">
+    <div className=" flex flex-col items-center mt-20">
      
       <div>
         <img className="h-60" src={cartimg} alt="" />

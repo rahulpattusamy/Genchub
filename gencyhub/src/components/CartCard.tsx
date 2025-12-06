@@ -12,7 +12,7 @@ const CartCard = () => {
   if (!cart) return <EmptycartMessage />;
   if (cart.length == 0) return <EmptycartMessage />
   return (
-    <div>
+    <>
       <div className=" flex flex-col items-center lg:flex lg:flex-col justify-around gap-y-5">
         {cart?.map((item) => {
           const price = item.price.toFixed();
@@ -27,7 +27,7 @@ const CartCard = () => {
               </div>
               <div className="right mt-1.5 ml-7">
                 <Link to={'/products/' + item.id}>
-                 <h1 className=" md:w-60 md:text2 dark:text-white hover:underline " >{item.title}</h1>
+                 <h1 className=" md:w-60 md:text2 dark:text-white hover:underline text-2xl font-medium " >{item.title}</h1>
                 </Link>
                
                 <h2 className="mt-1">
@@ -36,7 +36,7 @@ const CartCard = () => {
                   </span>
                 </h2>
                 <div className="mt-4">
-                  <h3 className="h-5 flex items-center text-center md:text2 dark:text-white">
+                  <h3 className="h-5 flex items-center text-center md:text2 dark:text-white font-medium">
                     Quantity:
                     <div className="flex items-center w-25 justify-between ml-5">
                       <button
@@ -70,7 +70,7 @@ const CartCard = () => {
           );
         })}
       </div>
-    </div>
+    </>
   );
 };
 

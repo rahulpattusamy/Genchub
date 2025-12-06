@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import auth from "../config/firebase-config";
 import useShoppingstore from "../store/ShoppingStatus";
 import useAuthStore from "../store/authstore";
+import ScrollToTop from "../scrollTop";
 
 const Layout = () => {
   const setUser = useAuthStore((s) => s.setUser);
@@ -30,9 +31,10 @@ const Layout = () => {
   }, [setUser, loadCartFromLocalStorage, loadWishlistFromLocalStorage]);
   return (
     <>
+    <ScrollToTop/>
       <NavBar />
       <Outlet />
-      <div className="mt-5">
+      <div>
         <Footer />
       </div>
 
